@@ -1,0 +1,1614 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40" land="fr"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 14">
+<meta name="Originator" content="Microsoft Word 14">
+<link rel="File-List" href="https://chamilo.grenoble-inp.fr/courses/ESISAR3AMCS351/document/Projet_MIPS/sujet_fichiers/filelist.xml">
+<link rel="Edit-Time-Data" href="https://chamilo.grenoble-inp.fr/courses/ESISAR3AMCS351/document/Projet_MIPS/sujet_fichiers/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>CS351 - Projet de développement en langage C</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Ioannis Parissis</o:Author>
+  <o:LastAuthor>Ioannis Parissis</o:LastAuthor>
+  <o:Revision>30</o:Revision>
+  <o:TotalTime>187</o:TotalTime>
+  <o:Created>2016-10-21T07:35:00Z</o:Created>
+  <o:LastSaved>2017-11-21T21:08:00Z</o:LastSaved>
+  <o:Pages>2</o:Pages>
+  <o:Words>1202</o:Words>
+  <o:Characters>6612</o:Characters>
+  <o:Company>Microsoft</o:Company>
+  <o:Lines>55</o:Lines>
+  <o:Paragraphs>15</o:Paragraphs>
+  <o:CharactersWithSpaces>7799</o:CharactersWithSpaces>
+  <o:Version>14.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel="themeData" href="https://chamilo.grenoble-inp.fr/courses/ESISAR3AMCS351/document/Projet_MIPS/sujet_fichiers/themedata.thmx">
+<link rel="colorSchemeMapping" href="https://chamilo.grenoble-inp.fr/courses/ESISAR3AMCS351/document/Projet_MIPS/sujet_fichiers/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>120</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackRevisions/>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>FR</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SplitPgBreakAndParaMark/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073743103 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073786111 1 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:Times;
+	panose-1:2 2 6 3 5 4 5 2 3 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536859905 -1073711039 9 0 511 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Titre 1 Car";
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+h2
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Titre 2 Car";
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Note de bas de page Car";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Commentaire Car";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"En-tête Car";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:center 8.0cm right 16.0cm;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	vertical-align:super;}
+span.MsoCommentReference
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;}
+span.MsoEndnoteReference
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Note de fin Car";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+code
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:Commentaire;
+	mso-style-link:"Objet du commentaire Car";
+	mso-style-next:Commentaire;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Texte de bulles Car";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-noshow:yes;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-noshow:yes;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-noshow:yes;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-noshow:yes;
+	mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.Titre1Car
+	{mso-style-name:"Titre 1 Car";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Titre 1";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:bold;}
+span.Titre2Car
+	{mso-style-name:"Titre 2 Car";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Titre 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.NotedebasdepageCar
+	{mso-style-name:"Note de bas de page Car";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Note de bas de page";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.CommentaireCar
+	{mso-style-name:"Commentaire Car";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Commentaire;
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+span.En-tteCar
+	{mso-style-name:"En-tête Car";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:En-tête;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.NotedefinCar
+	{mso-style-name:"Note de fin Car";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Note de fin";
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+span.ObjetducommentaireCar
+	{mso-style-name:"Objet du commentaire Car";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-parent:"Commentaire Car";
+	mso-style-link:"Objet du commentaire";
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.TextedebullesCar
+	{mso-style-name:"Texte de bulles Car";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Texte de bulles";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+p.text-danger, li.text-danger, div.text-danger
+	{mso-style-name:text-danger;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("sujet_fichiers/header.html") fs;
+	mso-footnote-continuation-separator:url("sujet_fichiers/header.html") fcs;
+	mso-endnote-separator:url("sujet_fichiers/header.html") es;
+	mso-endnote-continuation-separator:url("sujet_fichiers/header.html") ecs;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:127210900;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1632232624 67895297 67895299 67895301 67895297 67895299 67895301 67895297 67895299 67895301;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:507528637;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1221806368 67895311 67895321 67895323 67895311 67895321 67895323 67895311 67895321 67895323;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l1:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l2
+	{mso-list-id:1661078568;
+	mso-list-type:hybrid;
+	mso-list-template-ids:445517588 67895297 67895299 67895301 67895297 67895299 67895301 67895297 67895299 67895301;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l2:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l2:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l3
+	{mso-list-id:1893880825;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1098714856 67895311 67895321 67895323 67895311 67895321 67895323 67895311 67895321 67895323;}
+@list l3:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l3:level4
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level5
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level6
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l3:level7
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level8
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l3:level9
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Tableau Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="sujet_data/bootstrap.html" rel="stylesheet" media="screen">
+<link href="sujet_data/cs410.html" rel="stylesheet" media="screen">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries --><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">.MathJax_Preview .MJXc-math {color: inherit!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXc-script {font-size: .8em}
+.MJXc-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXc-bold {font-weight: bold}
+.MJXc-italic {font-style: italic}
+.MJXc-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXc-largeop {font-size: 150%}
+.MJXc-largeop.MJXc-int {vertical-align: -.2em}
+.MJXc-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXc-display {display: block; text-align: center; margin: 1em 0}
+.MJXc-math span {display: inline-block}
+.MJXc-box {display: block!important; text-align: center}
+.MJXc-box:after {content: " "}
+.MJXc-rule {display: block!important; margin-top: .1em}
+.MJXc-char {display: block!important}
+.MJXc-mo {margin: 0 .15em}
+.MJXc-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXc-denom {display: inline-table!important; width: 100%}
+.MJXc-denom > * {display: table-row!important}
+.MJXc-surd {vertical-align: top}
+.MJXc-surd > * {display: block!important}
+.MJXc-script-box > *  {display: table!important; height: 50%}
+.MJXc-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXc-script-box > *:last-child > * {vertical-align: bottom}
+.MJXc-script-box > * > * > * {display: block!important}
+.MJXc-mphantom {visibility: hidden}
+.MJXc-munderover {display: inline-table!important}
+.MJXc-over {display: inline-block!important; text-align: center}
+.MJXc-over > * {display: block!important}
+.MJXc-munderover > * {display: table-row!important}
+.MJXc-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXc-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXc-mtr {display: table-row!important}
+.MJXc-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXc-mtr > .MJXc-mtd:first-child {padding-left: 0}
+.MJXc-mtr:first-child > .MJXc-mtd {padding-top: 0}
+.MJXc-mlabeledtr {display: table-row!important}
+.MJXc-mlabeledtr > .MJXc-mtd:first-child {padding-left: 0}
+.MJXc-mlabeledtr:first-child > .MJXc-mtd {padding-top: 0}
+.MJXc-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXc-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXc-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXc-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXc-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXc-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXc-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXc-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXc-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXc-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXc-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_CHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body style="tab-interval:35.4pt" vlink="purple" link="blue" lang="FR"><div id="MathJax_Message" style="display: none;"></div>
+
+<div class="WordSection1">
+
+<p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-no-proof:yes"><img id="_x0000_i1027" src="sujet_data/esisar.gif" width="203" height="120"></span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p></o:p></span></p>
+
+<div>
+
+<div>
+
+<h1><a name="_Toc433780607"></a><a name="_Toc431217176"></a><a name="_Toc428726478"></a><a name="_Toc422244245"></a><a name="_Toc334014111"></a><a name="_Toc334013557"></a><a name="_Toc333318114"></a><a name="_Toc201825693"></a><a name="_Toc201822230"></a><a name="_Toc200592608"></a><a name="_Toc200447312"></a><a name="_Toc200446564"></a><a name="_Toc200173303"><span style="mso-bookmark:
+_Toc200446564"><span style="mso-bookmark:_Toc200447312"><span style="mso-bookmark:
+_Toc200592608"><span style="mso-bookmark:_Toc201822230"><span style="mso-bookmark:
+_Toc201825693"><span style="mso-bookmark:_Toc333318114"><span style="mso-bookmark:
+_Toc334013557"><span style="mso-bookmark:_Toc334014111"><span style="mso-bookmark:
+_Toc422244245"><span style="mso-bookmark:_Toc428726478"><span style="mso-bookmark:
+_Toc431217176"><span style="mso-bookmark:_Toc433780607">Projet&nbsp;de
+programmation C: </span></span></span></span></span></span></span></span></span></span></span></span></a><span style="mso-bookmark:_Toc431217176"><span style="mso-bookmark:_Toc433780607">Emulation
+MIPS</span></span><a style="mso-endnote-id:edn1" href="#_edn1" name="_ednref1" title=""><span class="MsoEndnoteReference"><span style="mso-special-character:
+footnote"><!--[if !supportFootnotes]--><span class="MsoEndnoteReference"><b style="mso-bidi-font-weight:normal"><span style="font-size:24.0pt;font-family:
+&quot;Times New Roman&quot;,&quot;serif&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+minor-fareast;mso-font-kerning:18.0pt;mso-ansi-language:FR;mso-fareast-language:
+FR;mso-bidi-language:AR-SA">[i]</span></b></span><!--[endif]--></span></span></a><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p></o:p></span></h1>
+
+</div>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt"><span style="mso-fareast-font-family:
+&quot;Times New Roman&quot;">Le projet est à réaliser par groupes de 2 élèves. <o:p></o:p></span></p>
+
+<h2><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">Description du
+sujet<o:p></o:p></span></h2>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span style="font-size:
+11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Times;mso-fareast-language:EN-US">Un émulateur est
+un logiciel capable de reproduire le comportement d'un objet. Dans le cas qui
+nous intéresse il s'agit de la machine (processeur) MIPS lorsqu'elle exécute un
+programme. Reproduire le comportement signifie, plus précisément, que
+l'émulateur gère une mémoire et des registres identiques à ceux de la machine
+MIPS, puis réalise l'évolution de l'état de cette mémoire et de ses registres
+au fur et à mesure que les instructions du programme s'exécutent. L'émulateur
+doit fournir les mêmes résultats que ceux que l'on obtiendrait avec une
+exécution sur une vraie machine MIPS.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><b style="mso-bidi-font-weight:
+normal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Times;mso-fareast-language:
+EN-US">Le processeur MIPS, son architecture et ses instructions sont présentés
+en annexe.<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span style="font-size:
+11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Times;mso-fareast-language:EN-US">Deux modes de
+fonctionnement de l'émulateur sont prévus:<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpFirst" style="margin-bottom:12.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-pagination:none;mso-list:l0 level1 lfo2;
+mso-layout-grid-align:none;text-autospace:none"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;mso-fareast-language:EN-US"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Times;mso-fareast-language:EN-US">Le mode dit <b style="mso-bidi-font-weight:
+normal">interactif</b> dans lequel chaque instruction MIPS est lue au clavier
+(entrée par l'utilisateur) et interprétée directement. La commande EXIT (non
+incluse dans le jeu des instructions MIPS) permet de quitter l'émulateur.<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpLast" style="margin-bottom:12.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-pagination:none;mso-list:l0 level1 lfo2;
+mso-layout-grid-align:none;text-autospace:none"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:Symbol;mso-fareast-font-family:
+Symbol;mso-bidi-font-family:Symbol;mso-fareast-language:EN-US"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Times;mso-fareast-language:EN-US">Le mode dit <b style="mso-bidi-font-weight:
+normal">non-interactif</b> dans lequel l'émulateur va lire les instructions une
+à une dans le fichier dont le nom (chemin d'accès) est passé en paramètre. <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span style="font-size:
+11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Times;mso-fareast-language:EN-US">Le projet sera
+réalisé sous linux. L'émulateur sera appelé en tapant la commande&nbsp;<span class="SpellE"><b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:
+normal">emul</i></b></span><b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal">-mips </i></b>:<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span class="SpellE"><i style="mso-bidi-font-style:normal"><span style="font-size:11.0pt;line-height:
+115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;
+mso-bidi-font-family:Times;mso-fareast-language:EN-US">emul</span></i></span><i style="mso-bidi-font-style:normal"><span style="font-size:11.0pt;line-height:
+115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;
+mso-bidi-font-family:Times;mso-fareast-language:EN-US">-mips </span></i><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Times;mso-fareast-language:
+EN-US">en mode interactif<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span style="font-size:
+11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Times;mso-fareast-language:EN-US">Une fois cette
+commande lancée, le programme demande à l'utilisateur d'entrer une instruction,
+l'exécute et en demande une nouvelle et ainsi de suite jusqu'à lecture de EXIT.
+<b style="mso-bidi-font-weight:normal">Dans ce mode, il ne sera possible
+d'exécuter que des instructions en séquence.</b> <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span class="SpellE"><i style="mso-bidi-font-style:normal"><span style="font-size:11.0pt;line-height:
+115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;
+mso-bidi-font-family:Times;mso-fareast-language:EN-US">emul</span></i></span><i style="mso-bidi-font-style:normal"><span style="font-size:11.0pt;line-height:
+115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;
+mso-bidi-font-family:Times;mso-fareast-language:EN-US">-mips <span class="SpellE">prog_filename</span> </span></i><span style="font-size:11.0pt;
+line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Times;mso-fareast-language:EN-US"><span style="mso-spacerun:yes">&nbsp;</span><i style="mso-bidi-font-style:normal"><span style="color:black;mso-themecolor:text1">-pas</span></i><span style="color:
+black;mso-themecolor:text1"> en mode non-interactif</span><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span class="GramE"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Times;mso-fareast-language:
+EN-US">où</span></span><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Times;mso-fareast-language:EN-US"> <span class="SpellE"><i style="mso-bidi-font-style:
+normal">prog_filename</i></span> est le nom d'un fichier contenant le programme
+écrit en assembleur MIPS à exécuter. Si l'option<span style="mso-spacerun:yes">&nbsp; </span><i style="mso-bidi-font-style:normal">–pas</i>
+est spécifiée, le programme doit être exécuté pas à pas (c'est-à-dire, demander
+à l'utilisateur de <span class="GramE">valider</span> le passage à l'instruction
+suivante).<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span style="font-size:
+11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Times;mso-fareast-language:EN-US">Que ce soit en
+mode interactif ou bien dans le fichier programme, </span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">les instructions MIPS sont fournies (une par ligne) en langage
+assembleur (format texte). <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:12.0pt;line-height:115%;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none"><span style="font-size:
+11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Arial;mso-fareast-language:EN-US">L'émulateur
+commence par afficher la traduction de l'instruction (ou bien la totalité du
+programme) sous forme hexadécimale. Par exemple, <i style="mso-bidi-font-style:
+normal"><span style="mso-bidi-font-weight:bold">2402000a</span></i> est la
+représentation hexadécimale de l'instruction dont le format texte est<span style="mso-spacerun:yes">&nbsp; </span><span class="SpellE"><i style="mso-bidi-font-style:
+normal"><span style="mso-bidi-font-weight:bold">addiu</span></i></span><i style="mso-bidi-font-style:normal"><span style="mso-bidi-font-weight:bold">
+$v0, $<span class="SpellE">zero</span>, 10</span></i>.</span><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Times;mso-fareast-language:
+EN-US"><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">Ensuite, l'émulateur utilisera cette représentation hexadécimale pour exécuter
+l'instruction (ou le programme instruction par instruction). Après chaque
+instruction, l'émulateur va modifier l'état de l'architecture MIPS, c'est à
+dire les valeurs stockées dans les registres et dans la mémoire. </span><b style="mso-bidi-font-weight:normal"><span style="font-size:11.0pt;line-height:
+115%;mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">La précision de votre émulateur est votre priorité</span></b><span style="font-size:11.0pt;line-height:115%;mso-fareast-font-family:Calibri;
+mso-bidi-font-family:Arial;mso-fareast-language:EN-US"> principale. Plus
+précisément, assurez-vous que l'<b style="mso-bidi-font-weight:normal">état
+architectural est correctement mis à jour </b>après l'exécution de chaque
+instruction.<i style="mso-bidi-font-style:normal"> </i><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:11.0pt;mso-fareast-font-family:Calibri;
+mso-bidi-font-family:Arial;mso-fareast-language:EN-US">Enfin, l'émulateur
+affichera le nouvel état (valeur des registres, contenu de la mémoire) avant
+d'exécuter l'instruction suivante.<o:p></o:p></span></p>
+
+<p><span style="font-size:11.0pt;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">Afin de vérifier que votre émulateur
+fonctionne correctement, vous devez écrire plusieurs programmes à l'aide de
+toutes les instructions MIPS implémentées. </span><span style="mso-spacerun:yes">&nbsp;</span></p>
+
+<h2><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">Travail demandé et
+planning<o:p></o:p></span></h2>
+
+<p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">Il vous est demandé d'écrire une application C qui réalise un émulateur
+du processeur MIPS. Cet émulateur reproduira le comportement de chaque
+instruction<a style="mso-endnote-id:edn2" href="#_edn2" name="_ednref2" title=""><span class="MsoEndnoteReference"><span style="mso-special-character:footnote"><!--[if !supportFootnotes]--><span class="MsoEndnoteReference"><span style="font-size:11.0pt;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-ansi-language:
+FR;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">[ii]</span></span><!--[endif]--></span></span></a>
+et permettra à l'utilisateur d'exécuter des programmes MIPS en observant<span style="mso-spacerun:yes">&nbsp; </span>leurs sorties. <b style="mso-bidi-font-weight:
+normal">La prise en compte des <i style="mso-bidi-font-style:normal">étiquettes</i>
+et des <i style="mso-bidi-font-style:normal">directives</i> n'est pas demandée.
+</b><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">Plus précisément, il vous est demandé d'effectuer dans l'ordre les
+tâches suivantes :<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpFirst" style="margin-bottom:10.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Calibri;mso-fareast-language:
+EN-US"><span style="mso-list:Ignore">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">Ecrire des programmes MIPS qui vous serviront
+à tester votre application. Des exemples seront fournis dans un premier temps
+afin de familiariser avec la syntaxe de l'assembleur MIPS. Il est important de
+bien comprendre le rôle de chacune des instructions <span class="GramE">utilisée</span>
+! Cette étape est essentielle car elle vous permettra de prendre connaissance
+des spécifications MIPS. Vos programmes de tests devront contenir suffisamment
+de types d'instructions pour que vos tests soient <span class="SpellE">efficaces.Un</span>
+émulateur (projet de l'an passé) est disponible sur <span class="SpellE">Chamilo</span>
+afin de tester les codes.<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Calibri;mso-fareast-language:
+EN-US"><span style="mso-list:Ignore">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">Ecrire une première version de l'application
+permettant de traduire la forme textuelle des instructions MIPS en leur forme
+hexadécimale. Votre programme doit avoir deux paramètres : le nom du fichier
+contenant le programme MIPS et le nom du fichier qui contiendra le résultat de
+la traduction. A cette étape la traduction se fait d'un seul coup (pas de mode
+pas à pas ou interactif).<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="mso-fareast-font-family:Cambria;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Cambria;mso-bidi-theme-font:major-latin"><span style="mso-list:Ignore">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">TESTER cette première version aves les tests
+fournis et </span>construits lors de l'étape 1.</p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;line-height:115%"><b style="mso-bidi-font-weight:normal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">Fournitures attendues </span></b><span style="font-size:11.0pt;
+line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Arial;mso-fareast-language:EN-US">: les programmes
+MIPS de l'étape 1</span>, l'application que vous avez réalisée (zip du code
+source et de l'exécutable) et les résultats (sous forme de fichier texte)
+obtenus par les tests<b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal">. <span style="color:red">Ces fournitures
+sont à déposer sur <span class="SpellE">chamilo</span> au plus tard à la fin de
+la troisième séance consacrée au projet. A noter que l'évaluation sera faite à
+partir des exemples fournis à l'étape 1, ainsi que deux autres programmes qui
+ne seront pas donnés à l'avance. </span>.</i></b></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;line-height:115%"><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Calibri;mso-fareast-language:
+EN-US"><span style="mso-list:Ignore">4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">Définir la structure de votre émulateur en
+termes de modules (un module est un ensemble cohérent de fonctions, définies à
+l'aide d'un fichier .h et d'un fichier .c). On définira au moins :<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-top:0cm;margin-right:0cm;
+margin-bottom:10.0pt;margin-left:72.0pt;mso-add-space:auto;text-indent:-18.0pt;
+line-height:115%;mso-list:l1 level2 lfo4"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Calibri;mso-fareast-language:
+EN-US"><span style="mso-list:Ignore">a.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">Un module gérant la mémoire <span style="mso-spacerun:yes">&nbsp;</span>fournissant une fonction de lecture et une
+fonction d'écriture. Préciser la structure de données retenue pour représenter
+la mémoire et justifier votre choix. <o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;line-height:115%"><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">Un module gérant les registres du processeur
+(fonctions de lecture et écriture).<b style="mso-bidi-font-weight:normal">Fourniture
+attendue </b>: un document de quelques pages expliquant votre réflexion, ainsi
+que les headers (.h). <b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal"><span style="color:red">Cette fourniture est
+à déposer sur <span class="SpellE">chamilo</span> au plus tard à la fin de la
+quatrième séance consacrée au projet. Des exemples de programmation modulaire
+seront donnés en cours. Ne pas hésiter à aller chercher plus d'exemples ou
+d'explications en ligne
+(https://openclassrooms.com/courses/apprenez-a-programmer-en-c/la-programmation-modulaire
+!)</span>.</i></b><o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;line-height:115%"><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Calibri;mso-fareast-language:
+EN-US"><span style="mso-list:Ignore">5.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">Réaliser l'application finale conformément
+aux décisions de conception que vous avez prises à l'étape précédente (notamment
+les modes pas à pas et interactif). Si vous pensez ne pas avoir le temps de
+réaliser toutes les instructions MIPS, il est conseillé d'en retenir un sous
+ensemble permettant d'écrire des programmes significatifs (avec conditions,
+boucles…). <o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Calibri;mso-fareast-language:
+EN-US"><span style="mso-list:Ignore">6.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">TESTER la version finale.<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;line-height:115%"><b style="mso-bidi-font-weight:normal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">Fournitures attendues </span></b><span style="font-size:11.0pt;
+line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Arial;mso-fareast-language:EN-US">: l'application
+que vous avez réalisée (zip du code source et de l'exécutable) et les résultats
+(sous forme de fichier texte) obtenus par les tests. Un bilan est également
+demandé précisant <b style="mso-bidi-font-weight:normal">les tâches effectuées
+par chaque membre de votre groupe</b>. <b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal"><span style="color:red">Ces fournitures sont
+à déposer sur <span class="SpellE">chamilo</span> au plus tard à la fin de la
+dernière séance consacrée au projet</span>.</i></b><o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;line-height:115%"><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="margin-bottom:10.0pt;mso-add-space:
+auto;text-indent:-18.0pt;line-height:115%;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Calibri;mso-fareast-language:
+EN-US"><span style="mso-list:Ignore">7.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><i style="mso-bidi-font-style:normal"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">(Optionnel)</span></i><span style="font-size:11.0pt;line-height:115%;
+font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;mso-bidi-font-family:
+Arial;mso-fareast-language:EN-US">&nbsp;: modifier votre émulateur pour prendre
+en compte les étiquettes. Faire de nouveaux programmes MIPS de tests pour
+explorer cette nouvelle fonctionnalité. <o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpLast" style="margin-bottom:10.0pt;mso-add-space:
+auto;line-height:115%"><b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal"><span style="font-size:11.0pt;line-height:
+115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;
+mso-bidi-font-family:Arial;mso-fareast-language:EN-US">Fournitures optionnelles</span></i></b><b style="mso-bidi-font-weight:normal"><span style="font-size:11.0pt;line-height:
+115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;mso-fareast-font-family:Calibri;
+mso-bidi-font-family:Arial;mso-fareast-language:EN-US"> </span></b><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">: la nouvelle version de l'application que vous avez réalisée (zip du
+code source et de l'exécutable), les nouveaux tests et les résultats (sous
+forme de fichier texte) obtenus par les <i style="mso-bidi-font-style:normal">anciens
+et nouveaux</i> tests. <br style="mso-special-character:line-break">
+<!--[if !supportLineBreakNewLine]--><br style="mso-special-character:line-break">
+<!--[endif]--><o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-bottom:10.0pt;line-height:115%"><span style="font-size:11.0pt;line-height:115%;font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;;
+mso-fareast-font-family:Calibri;mso-bidi-font-family:Arial;mso-fareast-language:
+EN-US">A la fin de chaque séance du projet, mettre à jour le fichier
+d'avancement et le déposer sur le répertoire dédié de <span class="SpellE">chamilo</span>.<o:p></o:p></span></p>
+
+<h2><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">Ressources<o:p></o:p></span></h2>
+
+<p class="MsoListParagraphCxSpFirst" style="text-align:left;
+text-indent:-18.0pt;mso-list:l3 level1 lfo6" align="left"><!--[if !supportLists]--><span style="mso-fareast-font-family:Cambria;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Cambria;mso-bidi-theme-font:major-latin"><span style="mso-list:Ignore">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><a href="https://chamilo.grenoble-inp.fr/courses/ESISAR3AMCS351/document/Projet_MIPS/Annexe1-MIPS.pdf">Document</a> sur le
+processeur MIPS, extrait du sujet du projet d'informatique de <span class="SpellE">Phelma</span>, 2ème année (François <span class="SpellE">Portet</span>,
+Nicolas Castagne, Mathieu <span class="SpellE">Chabanas</span>, Laurent <span class="SpellE">Fesquet</span>). </p>
+
+<p class="MsoListParagraphCxSpLast" style="text-align:left;text-indent:
+-18.0pt;mso-list:l3 level1 lfo6" align="left"><a name="_Ref460601670"><!--[if !supportLists]--><span style="mso-fareast-font-family:Cambria;mso-fareast-theme-font:major-latin;
+mso-bidi-font-family:Cambria;mso-bidi-theme-font:major-latin"><span style="mso-list:Ignore">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--></a><a href="https://chamilo.grenoble-inp.fr/courses/ESISAR3AMCS351/document/Projet_MIPS/Annexe2-InstructionsMIPS.pdf"><span style="mso-bookmark:_Ref460601670">Descriptif</span><span style="mso-bookmark:
+_Ref460601670"></span></a><span style="mso-bookmark:_Ref460601670"> du jeu
+d'instruction MIPS.</span></p>
+
+<h2><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">Enseignants<o:p></o:p></span></h2>
+
+<p class="MsoListParagraphCxSpFirst" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;mso-add-space:auto;text-indent:-18.0pt;mso-list:l2 level1 lfo8"><!--[if !supportLists]--><span style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">Ioannis
+Parissis (Ioannis.Parissis@grenoble-inp.fr) <o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpMiddle" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;mso-add-space:auto;text-indent:-18.0pt;mso-list:l2 level1 lfo8"><!--[if !supportLists]--><span style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">Guillaume
+<span class="SpellE">Besset</span> (guillaume.besset@grenoble-inp.fr)<o:p></o:p></span></p>
+
+<p class="MsoListParagraphCxSpLast" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;mso-add-space:auto;text-indent:-18.0pt;mso-list:l2 level1 lfo8"><!--[if !supportLists]--><span style="font-family:Symbol;mso-fareast-font-family:Symbol;mso-bidi-font-family:
+Symbol"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">Adrien
+<span class="SpellE">Rochedy</span>(adrien.rochedy@gmail.com)<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="mso-margin-top-alt:auto;margin-bottom:12.0pt;
+margin-left:36.0pt"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+margin-left:36.0pt"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><br>
+<br>
+<br>
+<script src="sujet_data/jquery.html">
+</script><script src="sujet_data/bootstrap_002.html">
+</script><o:p></o:p></span></p>
+
+</div>
+
+<div style="mso-element:endnote-list"><!-- container --><!--[if !supportEndnotes]--><br clear="all">
+
+<hr width="33%" size="1" align="left">
+
+<!--[endif]-->
+
+<div style="mso-element:endnote" id="edn1"><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+<p class="MsoEndnoteText"><a style="mso-endnote-id:edn1" href="#_ednref1" name="_edn1" title=""><span class="MsoEndnoteReference"><span style="mso-special-character:
+footnote"><!--[if !supportFootnotes]--><span class="MsoEndnoteReference"><span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,&quot;serif&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-fareast-theme-font:minor-fareast;mso-ansi-language:FR;
+mso-fareast-language:FR;mso-bidi-language:AR-SA"><!-- Include all compiled plugins (below), or include individual files as needed -->[i]</span></span><!--[endif]--></span></span></a>
+Ce sujet est largement inspiré du projet d'informatique de <span class="SpellE">Phelma</span>,
+2ème année (François <span class="SpellE">Portet</span>, Nicolas Castagne,
+Mathieu <span class="SpellE">Chabanas</span>, Laurent <span class="SpellE">Fesquet</span>).</p>
+
+</div>
+
+<div style="mso-element:endnote" id="edn2">
+
+<p class="MsoFootnoteText"><a style="mso-endnote-id:edn2" href="#_ednref2" name="_edn2" title=""><span class="MsoEndnoteReference"><span style="mso-special-character:
+footnote"><!--[if !supportFootnotes]--><span class="MsoEndnoteReference"><span style="font-size:10.0pt;font-family:&quot;Cambria&quot;,&quot;serif&quot;;mso-ascii-theme-font:
+major-latin;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-fareast-theme-font:
+minor-fareast;mso-hansi-theme-font:major-latin;mso-bidi-font-family:&quot;Times New Roman&quot;;
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:FR;mso-fareast-language:FR;
+mso-bidi-language:AR-SA">[ii]</span></span><!--[endif]--></span></span></a> Il est
+possible que toutes les instructions de l’annexe <!--[if supportFields]><span
+style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>REF _Ref460601670 \r \h <span
+style='mso-element:field-separator'></span><![endif]-->2<!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F005200650066003400360030003600300031003600370030000000</w:data>
+</xml><![endif]--><!--[if supportFields]><span style='mso-element:field-end'></span><![endif]-->
+ne soient pas prises en compte, si le temps vous manque. Dans ce cas, il faudra
+choisir soigneusement des instructions vous permettant, malgré tout, d'écrire
+des programmes non triviaux.</p>
+
+</div>
+
+</div>
+
+
+
+
+<script id="_jq" src="jquery_005.js"></script><script id="_fr7" src="MathJax.js"></script><script id="_fr4" src="jquery-ui.js"></script><link href="jquery-ui.css" rel="stylesheet" type="text/css"><link href="theme.css" rel="stylesheet" type="text/css"><script id="_fr2" src="sujet_data/jquery.js"></script><script id="_fr3" src="sujet_data/glossary.js"></script></body></html>
