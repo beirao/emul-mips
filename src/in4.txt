@@ -1,0 +1,40 @@
+ADDI $2,$0,5
+   ADDI $3,$0,7
+
+# some comment
+SW $3,10($0)
+
+LW $4,10($0) # some other comment
+
+SLL $5,$4,2
+SRL $6,$5,2
+SUB $7,$3,$2
+ADD $8,$3,$2
+SLT $9,$3,$2
+SLT $10,$2,$3
+ROTR $11,$2,17
+OR $12,$2,$3
+AND $13,$2,$3
+XOR $14,$2,$3
+MULT $2,$3
+MFLO $16
+MFHI $17
+MULT $2,$11
+MFLO $18
+MFHI $19
+ADDI $20,$2,17
+LUI $20, 16
+DIV $5,$2
+ADDI $21,$0,100
+JR $21
+ADDI $3,$0,0
+ADDI $21,$0,0
+ADD $22,$22,$2
+ADDI $21,$21,1
+SLT $23,$21,$3
+BGTZ $23, -4
+NOP
+BEQ $22,$16,2
+NOP
+ADDI $2,$0,0
+NOP
