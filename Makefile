@@ -1,6 +1,6 @@
 
 CC = gcc
-CFLAGS = -W -Wall -ansi -pedantic
+CFLAGS = -g -W -Wall -ansi -pedantic
 LDFLAGS = -lm
 EXEC = fonction #UNIQUE CHANGEMENT A FAIRE EN FONCTION DU NOM VOULU POUR L'EXECUTABLE
 SRC = $(wildcard *.c) #liste de nos fichiers sources générée automatiquement (faire attention aux dépendances de ces .c)

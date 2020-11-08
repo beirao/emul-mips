@@ -7,10 +7,10 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
 {
     /*int rd, rs, rt;
     char* com = "oui"; */
-    char *init_chain = "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"; 
-    char chaine[TAILLE_MAX] = "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
+    char *init_chain = ""; 
+    char chaine[TAILLE_MAX] = "";
     int hexa = 0;
-    int i = 0;
+    int argument[4]; 
 
     FILE *fichier_depart;
     FILE *fichier_arrive;
@@ -22,30 +22,29 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
     {
         
         chaine[TAILLE_MAX] = *init_chain;
-        int argument[4]; 
+        
         fgets(chaine, TAILLE_MAX, fichier_depart);
         
 
         printf("%s\n", chaine);
-        argument_to_tab(chaine, argument);
+        argumentToTab(chaine, argument);
 
-        
         /*ADD*/
-        if(test_chaine(3, chaine, "ADD ")){
+        if(testChaine(chaine, "ADD ")){
             hexa += 32;
             hexa += argument[0] << 11;
-            hexa += argument[2]<< 16;
+            hexa += argument[2] << 16;
             hexa += argument[1] << 21;
         }
         /*ADDI*/
-        else if(test_chaine(4, chaine, "ADDI ")){
+        else if(testChaine(chaine, "ADDI ")){
             hexa += argument[2];
             hexa += argument[0] << 16;
             hexa += argument[1] << 21;
             hexa += 8 << 26;
         }
         /*AND*/
-        else if(test_chaine(3, chaine, "AND ")){
+        else if(testChaine(chaine, "AND ")){
             hexa += 9;
             hexa += argument[0] << 11;
             hexa += argument[2] << 16;
@@ -53,10 +52,10 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
         }
 
         else{
-            printf("erreur");
+            printf("erreur\n");
         }
 
-        push_hexa(hexa, fichier_arrive);
+        pushHexa(hexa, fichier_arrive);
         hexa = 0;
     }
     
@@ -66,15 +65,14 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
     fclose(fichier_arrive);
 }
 
-void argument_to_tab(char *chaine, int *argument){
-    int i_chaine = 0;
+void argumentToTab(char *chaine, int *argument){
+    int i_chaine = 2;
     int i_arg = 0;
     argument[0] = 0;
     argument[1] = 0;
     argument[2] = 0;
 
-    while(chaine[i_chaine] != '°' && i_chaine <= 31){
-
+    while(chaine[i_chaine] != '\0'){
         if(chaine[i_chaine-1] == '$'){
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
@@ -84,7 +82,7 @@ void argument_to_tab(char *chaine, int *argument){
             i_arg++;
         }
 
-        else if(chaine[i_chaine-2] == ',' && chaine[i_chaine-1] != '$'){
+        else if(chaine[i_chaine-1] == ',' && chaine[i_chaine] != '$'){
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
                 argument[i_arg] += chaine[i_chaine] - '0';
@@ -96,25 +94,18 @@ void argument_to_tab(char *chaine, int *argument){
         else{
             i_chaine++;
         }
-
     }
-    argument[i_arg] = '\0-';
+
+    argument[i_arg] = '\0';
+    /*printf("%d ", argument[0]);
+    printf("%d ", argument[1]);
+    printf("%d ", argument[2]);
+    printf("%d \n", argument[3]);*/
 }
 
 
 
-int test_chaine(int arrive, char chaine[], char mot[]){
-    int i;
-
-    for(i = 0; i <= arrive; i++){
-        if(chaine[i] != mot[i]){
-            return 0;
-        }
-    }
-    return 1;
-}
-
-void push_hexa(int hexa, FILE *fichier_arrive){
+void pushHexa(int hexa, FILE *fichier_arrive){
 
     /*padding*/
     if(hexa < 0xFFFFF) fprintf(fichier_arrive, "0");
@@ -136,4 +127,14 @@ FILE *ouvertureFichier(char *chemin_fichier, char *mode)
     exit(0);
     }
     return fichier;
+}
+
+
+int testChaine(char chaine[], char mot[]){
+    long unsigned int i;
+
+    for(i = 0; i <= (strlen(mot)-1); i++){
+        if(chaine[i] != mot[i])  return 0;
+    }
+    return 1;
 }
