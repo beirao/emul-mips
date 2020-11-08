@@ -8,8 +8,9 @@
 
 FILE *ouvertureFichier(char *chemin_fichier, char *mode);	
 void lireDonnees(char fichier_commande[], char fichier_hexa[]);
-int test_chaine(int depart, int arrive, char chaine[], char mot[]);
+int test_chaine(int arrive, char chaine[], char mot[]);
 void push_hexa(int hexa, FILE *fichier_arrive);
+void argument_to_tab(char *chaine, int *argument);
 
 
 #endif

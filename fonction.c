@@ -1,27 +1,16 @@
 #include "fonction.h"
 
 
-FILE *ouvertureFichier(char *chemin_fichier, char *mode)
-{
-    FILE *fichier;
-    fichier = NULL;
-    fichier = fopen(chemin_fichier, mode);
 
-    if (fichier == NULL)
-    {
-    printf("ERROR : le fichier n'a pas pu être ouvert\n");
-    exit(0);
-    }
-    return fichier;
-}
 
 void lireDonnees(char fichier_commande[], char fichier_hexa[])
 {
     /*int rd, rs, rt;
     char* com = "oui"; */
-    char *init_chain = "";
-    char chaine[TAILLE_MAX] = "";
+    char *init_chain = "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"; 
+    char chaine[TAILLE_MAX] = "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
     int hexa = 0;
+    int i = 0;
 
     FILE *fichier_depart;
     FILE *fichier_arrive;
@@ -33,23 +22,34 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
     {
         
         chaine[TAILLE_MAX] = *init_chain;
+        int argument[4]; 
         fgets(chaine, TAILLE_MAX, fichier_depart);
+        
+
         printf("%s\n", chaine);
+        argument_to_tab(chaine, argument);
 
         
         /*ADD*/
-        if(test_chaine(0, 3, chaine, "ADD ")){
+        if(test_chaine(3, chaine, "ADD ")){
             hexa += 32;
-            hexa += (chaine[5]-'0') << 11;
-            hexa += (chaine[11]-'0') << 16;
-            hexa += (chaine[8]-'0') << 21;
+            hexa += argument[0] << 11;
+            hexa += argument[2]<< 16;
+            hexa += argument[1] << 21;
         }
         /*ADDI*/
-        else if(test_chaine(0, 3, chaine, "ADDI")){
-            hexa += (chaine[11]-'0');
-            hexa += (chaine[6]-'0') << 16;
-            hexa += (chaine[9]-'0') << 21;
+        else if(test_chaine(4, chaine, "ADDI ")){
+            hexa += argument[2];
+            hexa += argument[0] << 16;
+            hexa += argument[1] << 21;
             hexa += 8 << 26;
+        }
+        /*AND*/
+        else if(test_chaine(3, chaine, "AND ")){
+            hexa += 9;
+            hexa += argument[0] << 11;
+            hexa += argument[2] << 16;
+            hexa += argument[1] << 21;
         }
 
         else{
@@ -66,11 +66,48 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
     fclose(fichier_arrive);
 }
 
-int test_chaine(int depart, int arrive, char chaine[], char mot[]){
+void argument_to_tab(char *chaine, int *argument){
+    int i_chaine = 0;
+    int i_arg = 0;
+    argument[0] = 0;
+    argument[1] = 0;
+    argument[2] = 0;
+
+    while(chaine[i_chaine] != '°' && i_chaine <= 31){
+
+        if(chaine[i_chaine-1] == '$'){
+            while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
+                argument[i_arg] = argument[i_arg]*10;
+                argument[i_arg] += chaine[i_chaine] - '0';
+                i_chaine++;
+            }
+            i_arg++;
+        }
+
+        else if(chaine[i_chaine-2] == ',' && chaine[i_chaine-1] != '$'){
+            while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
+                argument[i_arg] = argument[i_arg]*10;
+                argument[i_arg] += chaine[i_chaine] - '0';
+                i_chaine++;
+            }
+            i_arg++;
+        }
+
+        else{
+            i_chaine++;
+        }
+
+    }
+    argument[i_arg] = '\0-';
+}
+
+
+
+int test_chaine(int arrive, char chaine[], char mot[]){
     int i;
 
-    for(i = depart; i <= arrive; i++){
-        if(chaine[i] != mot[i-depart]){
+    for(i = 0; i <= arrive; i++){
+        if(chaine[i] != mot[i]){
             return 0;
         }
     }
@@ -85,4 +122,18 @@ void push_hexa(int hexa, FILE *fichier_arrive){
     if(hexa < 0xFFFFFFF) fprintf(fichier_arrive, "0");
 
     fprintf(fichier_arrive, "%x\n", hexa);
+}
+
+FILE *ouvertureFichier(char *chemin_fichier, char *mode)
+{
+    FILE *fichier;
+    fichier = NULL;
+    fichier = fopen(chemin_fichier, mode);
+
+    if (fichier == NULL)
+    {
+    printf("ERROR : le fichier n'a pas pu être ouvert\n");
+    exit(0);
+    }
+    return fichier;
 }
