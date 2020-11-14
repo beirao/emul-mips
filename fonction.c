@@ -1,16 +1,16 @@
 #include "fonction.h"
 
 
-
-
 void lireDonnees(char fichier_commande[], char fichier_hexa[])
 {
     /*int rd, rs, rt;
     char* com = "oui"; */
     char *init_chain = "";
     char chaine[TAILLE_MAX] = "";
+    char *chaine_normalise = "";
     int hexa = 0;
     int argument[4];
+    int sw_lw = 0;
 
     FILE *fichier_depart;
     FILE *fichier_arrive;
@@ -20,17 +20,29 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
 
     while(!feof(fichier_depart))
     {
+        sw_lw = 0;
 
         chaine[TAILLE_MAX] = *init_chain;
 
         fgets(chaine, TAILLE_MAX, fichier_depart);
 
-        printf("%s", chaine);
-        argumentToTab(chaine, argument);
+        /*printf("%s", chaine);*/
+        chaine_normalise = traitementChaine(chaine);
+        printf("%s\n", chaine_normalise);
+        
+        
 
-        hexa = conversionHexa(chaine, argument);
+        
+        argumentToTab(chaine_normalise, argument);
 
-        pushHexa(hexa, fichier_arrive);
+        hexa = conversionHexa(chaine_normalise, argument);
+        printf("%x\n", hexa);
+        printf("-------------------------------------\n");
+        if(chaine_normalise[0] == '#' || (chaine_normalise[0] != 'N' && hexa == 0)) continue; 
+        
+        if(testChaine(chaine_normalise, "LW ") || testChaine(chaine_normalise, "SW ")) sw_lw = 1;
+
+        pushHexa(hexa, fichier_arrive, sw_lw);
         hexa = 0;
     }
 
@@ -38,6 +50,71 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
     fclose(fichier_arrive);
 }
 
+char *traitementChaine(char *chaine){
+    int i_chaine = 0, i_ie = 0, i_resultat = 0, i_temp = 0, nb_if = 0;
+    int index_espace[TAILLE_MAX] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; /*tableau qui repertorie tout les index dans la chaine des caractères : ' ', '#' (et la suite),*/
+    char *resultat;
+
+    resultat =  chaine;
+
+    while(resultat[i_chaine] != '\0'){
+
+        if(i_chaine >= 1){ /*condition pour ne pas tester chaine[-1]*/
+            if(resultat[i_chaine] == ' ' && (chaine[i_chaine-1] < 'A' || chaine[i_chaine-1] > 'Z')) {
+                index_espace[i_ie] = i_chaine;
+                i_ie++;
+            }
+            else if (resultat[i_chaine] == '#'){
+                index_espace[i_ie] = END;
+            }
+        }
+
+        else{
+            if(resultat[i_chaine] == ' ' ){
+                index_espace[i_ie] = i_chaine;
+                i_ie++;
+            }
+            else if (resultat[i_chaine] == '#'){
+                index_espace[i_ie] = END;
+            }
+        }
+        index_espace[i_ie] = END;
+        i_chaine++;
+    }
+    
+    /*printf("  |  %d ", index_espace[0]);
+    printf("%d ", index_espace[1]);
+    printf("%d ", index_espace[2]);
+    printf("%d ", index_espace[3]);
+    printf("%d ", index_espace[4]);
+    printf("%d ", index_espace[5]);
+    printf("%d ", index_espace[6]);
+    printf("%d \n", index_espace[7]);*/
+
+    if(index_espace[0] == END) return resultat;
+
+    i_ie = 0;
+    nb_if = 0;
+    while(index_espace[i_ie] != END ){
+        
+        if(index_espace[i_ie] ==  i_resultat){
+            i_temp = index_espace[i_ie] - nb_if;
+
+            while(resultat[i_temp] != '\0'){
+                resultat[i_temp] = resultat[i_temp + 1];
+                i_temp++;
+            }
+            nb_if++;
+            i_ie++;
+        } 
+        
+        else{
+            i_resultat++;
+        }   
+    }
+    return resultat;
+
+}
 
 
 void argumentToTab(char *chaine, int *argument){
@@ -57,12 +134,22 @@ void argumentToTab(char *chaine, int *argument){
             i_arg++;
         }
 
-        else if(chaine[i_chaine-1] == ',' && chaine[i_chaine] != '$'){
+        else if(chaine[i_chaine-1] == ',' && chaine[i_chaine] != '$' && chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
                 argument[i_arg] += chaine[i_chaine] - '0';
                 i_chaine++;
             }
+            i_arg++;
+        }
+
+        else if(chaine[i_chaine-2] == ',' && chaine[i_chaine-1] == '-'){
+            while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
+                argument[i_arg] = argument[i_arg]*10;
+                argument[i_arg] += chaine[i_chaine] - '0';
+                i_chaine++;
+            }
+            argument[i_arg] = -1 * argument[i_arg];
             i_arg++;
         }
 
@@ -120,8 +207,8 @@ int conversionHexa(char chaine[], int argument[]){
       }
 
     /* Format : Mnemonic (NOP - SYSCALL) */
-    else if(testChaine(chaine, "NOP ") || testChaine(chaine, "SYSCALL ")){
-        if(testChaine(chaine, "NOP ")) function = 0;
+    else if(testChaine(chaine, "NOP") || testChaine(chaine, "SYSCALL ")){
+        if(testChaine(chaine, "NOP")) function = 0;
         else if(testChaine(chaine, "SYSCALL ")) function = 12;
 
         hexa = rType(0, 0, 0, 0, function);
@@ -234,14 +321,29 @@ int jType(int op_code, int target){
 }
 
 
+int testChaine(char chaine[], char mot[]){
+    long unsigned int i;
 
-void pushHexa(int hexa, FILE *fichier_arrive){
+    for(i = 0; i <= (strlen(mot)-1); i++){
+        if(chaine[i] != mot[i])  return 0;
+    }
+    return 1;
+}
 
-    /*padding*/
-    if(hexa == 0x0) fprintf(fichier_arrive, "00000000");
-    if(hexa < 0xFFFFF) fprintf(fichier_arrive, "0");
-    if(hexa < 0xFFFFFF) fprintf(fichier_arrive, "0");
-    if(hexa < 0xFFFFFFF) fprintf(fichier_arrive, "0");
+
+void pushHexa(int hexa, FILE *fichier_arrive, int sw_lw){
+
+    if(sw_lw == 0){
+        /*padding*/
+        
+        if(hexa < 0xF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFFFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFFFFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFFFFFF) fprintf(fichier_arrive, "0");
+    }
 
     fprintf(fichier_arrive, "%x\n", hexa);
 }
@@ -263,12 +365,3 @@ FILE *ouvertureFichier(char *chemin_fichier, char *mode)
 }
 
 
-
-int testChaine(char chaine[], char mot[]){
-    long unsigned int i;
-
-    for(i = 0; i <= (strlen(mot)-1); i++){
-        if(chaine[i] != mot[i])  return 0;
-    }
-    return 1;
-}
