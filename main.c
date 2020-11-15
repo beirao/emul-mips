@@ -1,8 +1,11 @@
 #include "fonction.h"
 
-int main()
+int main(int argc, char const *argv[])
 {
-    lireDonnees("src/in4.txt","transcription_hexa");
+  char fichier_test[TAILLE_MAX] = "src/";
 
-	return 0;
+  strcat(fichier_test, argv[1]);
+  lireDonnees(fichier_test,"transcription_hexa");
+
+  return 0;
 }

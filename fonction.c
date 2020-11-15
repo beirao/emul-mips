@@ -3,8 +3,7 @@
 
 void lireDonnees(char fichier_commande[], char fichier_hexa[])
 {
-    /*int rd, rs, rt;
-    char* com = "oui"; */
+
     char *init_chain = "";
     char chaine[TAILLE_MAX] = "";
     char *chaine_normalise = "";
@@ -24,31 +23,36 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
         hexa = 0;
         chaine[TAILLE_MAX] = *init_chain;
 
+        /* Recuperation et traitement de l'instruction */
         fgets(chaine, TAILLE_MAX, fichier_depart);
-
-        /*printf("%s", chaine);*/
         chaine_normalise = traitementChaine(chaine);
-        printf("%s\n", chaine_normalise);
-        
-        
 
-        
-        argumentToTab(chaine_normalise, argument);
-
-        hexa = conversionHexa(chaine_normalise, argument);
-        printf("%x\n", hexa);
+        /* Affichage console */
         printf("-------------------------------------\n");
-        if(chaine_normalise[0] == '#' || (chaine_normalise[0] != 'N' && hexa == 0)) continue;
-        
-        if(testChaine(chaine_normalise, "LW ") || testChaine(chaine_normalise, "SW ")) sw_lw = 1;
+        printf("%s\n", chaine_normalise);
 
+        /* Conversion de l'instruction en hexadecimal */
+        argumentToTab(chaine_normalise, argument);
+        hexa = conversionHexa(chaine_normalise, argument);
+
+        /* Traitement des lignes de commentaires, des lignes vides et des instructions invalides (hexa = 0 sauf NOP) => pas d'ecriture dans le fichier hexa, retour au debut du while */
+        if(chaine_normalise[0] == '#' || (chaine_normalise[0] != 'N' && hexa == 0)) continue;
+
+        /* Affichage console */
+        printf("%x\n", hexa);
+
+        /* Ecriture dans le fichier hexa */
+        if(testChaine(chaine_normalise, "LW ") || testChaine(chaine_normalise, "SW ")) sw_lw = 1; /* Resolution d'un bug d'ecriture avec ces deux instructions */
         pushHexa(hexa, fichier_arrive, sw_lw);
-       
+
     }
 
+    printf("-------------------------------------\n");
     fclose(fichier_depart);
     fclose(fichier_arrive);
 }
+
+
 
 char *traitementChaine(char *chaine){
     int i_chaine = 0, i_ie = 0, i_resultat = 0, i_temp = 0, nb_if = 0;
@@ -81,7 +85,7 @@ char *traitementChaine(char *chaine){
         index_espace[i_ie] = END;
         i_chaine++;
     }
-    
+
     /*printf("  |  %d ", index_espace[0]);
     printf("%d ", index_espace[1]);
     printf("%d ", index_espace[2]);
@@ -96,7 +100,7 @@ char *traitementChaine(char *chaine){
     i_ie = 0;
     nb_if = 0;
     while(index_espace[i_ie] != END ){
-        
+
         if(index_espace[i_ie] ==  i_resultat){
             i_temp = index_espace[i_ie] - nb_if;
 
@@ -106,15 +110,16 @@ char *traitementChaine(char *chaine){
             }
             nb_if++;
             i_ie++;
-        } 
-        
+        }
+
         else{
             i_resultat++;
-        }   
+        }
     }
     return resultat;
 
 }
+
 
 
 void argumentToTab(char *chaine, int *argument){
@@ -276,8 +281,15 @@ int conversionHexa(char chaine[], int argument[]){
     }
 
 
+    /* ___Ligne vide ou Commentaire__ */
+    else if(chaine[0] == '#' || (chaine[0] == '\n')){
+        hexa = 0;
+    }
+
+
     /* ___ERREUR___ */
     else{
+        hexa = 0;
         printf("erreur : commande inconnue\n");
     }
 
@@ -299,6 +311,7 @@ int rType(int rd, int rs, int rt, int sa, int function){
 }
 
 
+
 int iType(int op_code, int rt, int rs, int immediate){
     int hexa = 0;
 
@@ -311,6 +324,7 @@ int iType(int op_code, int rt, int rs, int immediate){
 }
 
 
+
 int jType(int op_code, int target){
     int hexa = 0;
 
@@ -319,6 +333,7 @@ int jType(int op_code, int target){
 
     return hexa;
 }
+
 
 
 int testChaine(char chaine[], char mot[]){
@@ -331,11 +346,12 @@ int testChaine(char chaine[], char mot[]){
 }
 
 
+
 void pushHexa(int hexa, FILE *fichier_arrive, int sw_lw){
 
     if(sw_lw == 0){
         /*padding*/
-        
+
         if(hexa < 0xF) fprintf(fichier_arrive, "0");
         if(hexa < 0xFF) fprintf(fichier_arrive, "0");
         if(hexa < 0xFFF) fprintf(fichier_arrive, "0");
@@ -363,5 +379,3 @@ FILE *ouvertureFichier(char *chemin_fichier, char *mode)
     }
     return fichier;
 }
-
-
