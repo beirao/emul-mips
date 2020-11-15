@@ -56,13 +56,14 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
 
 char *traitementChaine(char *chaine){
     int i_chaine = 0, i_ie = 0, i_resultat = 0, i_temp = 0, nb_if = 0;
-    int index_espace[TAILLE_MAX] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; /*tableau qui repertorie tout les index dans la chaine des caractères : ' ', '#' (et la suite),*/
+    int index_espace[TAILLE_MAX] = {0}; /*tableau qui repertorie tout les index dans la chaine des caractères : ' ', '#' (et la suite),*/
     char *resultat;
+    int break_while = 0;
 
     resultat =  chaine;
 
-    while(resultat[i_chaine] != '\0'){
-
+    while(resultat[i_chaine] != '\0' && break_while == 0){
+        break_while = 0;
         if(i_chaine >= 1){ /*condition pour ne pas tester chaine[-1]*/
             if(resultat[i_chaine] == ' ' && (chaine[i_chaine-1] < 'A' || chaine[i_chaine-1] > 'Z')) {
                 index_espace[i_ie] = i_chaine;
@@ -70,6 +71,7 @@ char *traitementChaine(char *chaine){
             }
             else if (resultat[i_chaine] == '#'){
                 index_espace[i_ie] = END;
+                break_while = 1;
             }
         }
 
@@ -80,20 +82,12 @@ char *traitementChaine(char *chaine){
             }
             else if (resultat[i_chaine] == '#'){
                 index_espace[i_ie] = END;
+                break_while = 1;
             }
         }
         index_espace[i_ie] = END;
         i_chaine++;
     }
-
-    /*printf("  |  %d ", index_espace[0]);
-    printf("%d ", index_espace[1]);
-    printf("%d ", index_espace[2]);
-    printf("%d ", index_espace[3]);
-    printf("%d ", index_espace[4]);
-    printf("%d ", index_espace[5]);
-    printf("%d ", index_espace[6]);
-    printf("%d \n", index_espace[7]);*/
 
     if(index_espace[0] == END) return resultat;
 
@@ -140,6 +134,15 @@ void argumentToTab(char *chaine, int *argument){
         }
 
         else if(chaine[i_chaine-1] == ',' && chaine[i_chaine] != '$' && chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
+            while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
+                argument[i_arg] = argument[i_arg]*10;
+                argument[i_arg] += chaine[i_chaine] - '0';
+                i_chaine++;
+            }
+            i_arg++;
+        }
+
+        else if(chaine[i_chaine-2] >= 'A' && chaine[i_chaine-2] <= 'Z' && chaine[i_chaine-1] == ' ' && chaine[i_chaine] != '$'){
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
                 argument[i_arg] += chaine[i_chaine] - '0';
