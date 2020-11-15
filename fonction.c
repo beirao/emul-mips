@@ -21,7 +21,7 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
     while(!feof(fichier_depart))
     {
         sw_lw = 0;
-
+        hexa = 0;
         chaine[TAILLE_MAX] = *init_chain;
 
         fgets(chaine, TAILLE_MAX, fichier_depart);
@@ -38,12 +38,12 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
         hexa = conversionHexa(chaine_normalise, argument);
         printf("%x\n", hexa);
         printf("-------------------------------------\n");
-        if(chaine_normalise[0] == '#' || (chaine_normalise[0] != 'N' && hexa == 0)) continue; 
+        if(chaine_normalise[0] == '#' || (chaine_normalise[0] != 'N' && hexa == 0)) continue;
         
         if(testChaine(chaine_normalise, "LW ") || testChaine(chaine_normalise, "SW ")) sw_lw = 1;
 
         pushHexa(hexa, fichier_arrive, sw_lw);
-        hexa = 0;
+       
     }
 
     fclose(fichier_depart);
