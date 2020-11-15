@@ -194,7 +194,7 @@ int conversionHexa(char chaine[], int argument[]){
     }
 
     /* Format : Mnemonic rs (JR) */
-    else if(testChaine(chaine, "JR ")){ /*PAS FINI*/
+    else if(testChaine(chaine, "JR ")){
         hexa = rType(0, argument[0], 0, 0, 8);
     }
 
@@ -220,9 +220,9 @@ int conversionHexa(char chaine[], int argument[]){
     }
 
     /* Format : Mnemonic rd, rt, sa (SLL - SRL) */
-    else if(testChaine(chaine, "SLL ") || testChaine(chaine, "SLT ")){
+    else if(testChaine(chaine, "SLL ") || testChaine(chaine, "SRL ")){
         if(testChaine(chaine, "SLL ")) function = 0;
-        else if(testChaine(chaine, "SLT ")) function = 2;
+        else if(testChaine(chaine, "SRL ")) function = 2;
 
         hexa = rType(argument[0], 0, argument[1], argument[2], function);
     }
