@@ -25,15 +25,15 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
 
         /* Recuperation et traitement de l'instruction */
         fgets(chaine, TAILLE_MAX, fichier_depart);
-        chaine_normalise = traitementChaine(chaine);
+        chaine_normalise = traitementChaine(chaine); /*Normalise la chaine en enlevant tout les espaces inutiles*/
 
         /* Affichage console */
         printf("-------------------------------------\n");
         printf("%s\n", chaine_normalise);
 
         /* Conversion de l'instruction en hexadecimal */
-        argumentToTab(chaine_normalise, argument);
-        hexa = conversionHexa(chaine_normalise, argument);
+        argumentToTab(chaine_normalise, argument); /*met les arguments de l'instruction dans le tableau argument */
+        hexa = conversionHexa(chaine_normalise, argument); /*fonction qui produit le code hexa avec les arguments et la chaine normalisée*/
 
         /* Traitement des lignes de commentaires, des lignes vides et des instructions invalides (hexa = 0 sauf NOP) => pas d'ecriture dans le fichier hexa, retour au debut du while */
         if(chaine_normalise[0] == '#' || (chaine_normalise[0] != 'N' && hexa == 0)) continue;
@@ -62,7 +62,8 @@ char *traitementChaine(char *chaine){
 
     resultat =  chaine;
 
-    while(resultat[i_chaine] != '\0' && break_while == 0){
+    /*cette premiere boucle repertorie l'index des espaces inutile dans le tableau index_espace*/
+    while(resultat[i_chaine] != '\0' && break_while == 0){ /*Boucle jusqu'a la fin de la chaine (fin des instructions) */
         break_while = 0;
         if(i_chaine >= 1){ /*condition pour ne pas tester chaine[-1]*/
             if(resultat[i_chaine] == ' ' && (chaine[i_chaine-1] < 'A' || chaine[i_chaine-1] > 'Z')) {
@@ -89,10 +90,12 @@ char *traitementChaine(char *chaine){
         i_chaine++;
     }
 
-    if(index_espace[0] == END) return resultat;
+    if(index_espace[0] == END) return resultat; /*si c'est un commentaire ou ligne vide renvoie {0}*/
 
     i_ie = 0;
     nb_if = 0;
+
+    /*cette deuxieme boucle enleve les espaces inutiles graces au tableau index_espace*/
     while(index_espace[i_ie] != END ){
 
         if(index_espace[i_ie] ==  i_resultat){
@@ -123,8 +126,18 @@ void argumentToTab(char *chaine, int *argument){
     argument[1] = 0;
     argument[2] = 0;
 
+    /*boucle qui rempli le tableau argument en fonction des differentes configuration*/
     while(chaine[i_chaine] != '\0'){
         if(chaine[i_chaine-1] == '$'){
+            while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){/*cas d'un registre */
+                argument[i_arg] = argument[i_arg]*10;
+                argument[i_arg] += chaine[i_chaine] - '0';
+                i_chaine++;
+            }
+            i_arg++;
+        }
+
+        else if(chaine[i_chaine-1] == ',' && chaine[i_chaine] != '$' && chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){/*cas d'un argument qui n'est pas un registe*/
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
                 argument[i_arg] += chaine[i_chaine] - '0';
@@ -133,7 +146,7 @@ void argumentToTab(char *chaine, int *argument){
             i_arg++;
         }
 
-        else if(chaine[i_chaine-1] == ',' && chaine[i_chaine] != '$' && chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
+        else if(chaine[i_chaine-2] >= 'A' && chaine[i_chaine-2] <= 'Z' && chaine[i_chaine-1] == ' ' && chaine[i_chaine] != '$'){ /*cas d'un premier argument qui n'est pas un registre*/
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
                 argument[i_arg] += chaine[i_chaine] - '0';
@@ -142,22 +155,13 @@ void argumentToTab(char *chaine, int *argument){
             i_arg++;
         }
 
-        else if(chaine[i_chaine-2] >= 'A' && chaine[i_chaine-2] <= 'Z' && chaine[i_chaine-1] == ' ' && chaine[i_chaine] != '$'){
+        else if(chaine[i_chaine-2] == ',' && chaine[i_chaine-1] == '-'){/*cas d'un nombre negatif en argument */
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
                 argument[i_arg] += chaine[i_chaine] - '0';
                 i_chaine++;
             }
-            i_arg++;
-        }
-
-        else if(chaine[i_chaine-2] == ',' && chaine[i_chaine-1] == '-'){
-            while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
-                argument[i_arg] = argument[i_arg]*10;
-                argument[i_arg] += chaine[i_chaine] - '0';
-                i_chaine++;
-            }
-            argument[i_arg] = -1 * argument[i_arg];
+            argument[i_arg] = -1 * argument[i_arg];    
             i_arg++;
         }
 

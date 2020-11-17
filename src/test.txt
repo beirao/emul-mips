@@ -28,5 +28,3 @@ BEQ $4,$3,$4
 SLT $3, $3, $4
 
 TEST $3 #test commande invalide
-
-

@@ -8,7 +8,7 @@
 #include <time.h>
 #include <unistd.h>
 #define TAILLE_MAX 50
-#define END 999
+#define END 999 /*correspond a la fin dans un tableau de int dans la fonction chaine*/
 
 FILE *ouvertureFichier(char *chemin_fichier, char *mode);
 void lireDonnees(char fichier_commande[], char fichier_hexa[]);
