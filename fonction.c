@@ -17,14 +17,13 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
     fichier_depart = ouvertureFichier(fichier_commande, "r");
     fichier_arrive = ouvertureFichier(fichier_hexa, "w");
 
-    while(!feof(fichier_depart))
+    while(fgets(chaine, TAILLE_MAX, fichier_depart) != NULL)
     {
         sw_lw = 0;
         hexa = 0;
         chaine[TAILLE_MAX] = *init_chain;
 
         /* Recuperation et traitement de l'instruction */
-        fgets(chaine, TAILLE_MAX, fichier_depart);
         chaine_normalise = traitementChaine(chaine); /*Normalise la chaine en enlevant tout les espaces inutiles*/
 
         /* Affichage console */
@@ -77,7 +76,7 @@ char *traitementChaine(char *chaine){
         }
 
         else{
-            if(resultat[i_chaine] == ' ' ){
+            if(resultat[i_chaine] == ' ' ||  resultat[i_chaine] == '\t'){
                 index_espace[i_ie] = i_chaine;
                 i_ie++;
             }
@@ -285,7 +284,7 @@ int conversionHexa(char chaine[], int argument[]){
 
 
     /* ___Ligne vide ou Commentaire__ */
-    else if(chaine[0] == '#' || (chaine[0] == '\n')){
+    else if(chaine[0] == '#' || chaine[0] == '\r' || (chaine[0] == '\n')){
         hexa = 0;
     }
 
