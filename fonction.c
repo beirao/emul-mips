@@ -171,10 +171,6 @@ void argumentToTab(char *chaine, int *argument){
     }
 
     argument[i_arg] = '\0';
-    /*printf("%d ", argument[0]);
-    printf("%d ", argument[1]);
-    printf("%d ", argument[2]);
-    printf("%d \n", argument[3]);*/
 }
 
 
