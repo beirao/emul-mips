@@ -3,8 +3,8 @@ CC = gcc
 CFLAGS = -g -W -Wall -ansi -pedantic
 LDFLAGS = -lm
 EXEC = emul_mips #UNIQUE CHANGEMENT A FAIRE EN FONCTION DU NOM VOULU POUR L'EXECUTABLE
-SRC = $(wildcard *.c) #liste de nos fichiers sources générée automatiquement (faire attention aux dépendances de ces .c)
-H = $(wildcard *.h) #liste de nos fichiers .h générée automatiquement
+SRC = $(wildcard $(code)/*.c) #liste de nos fichiers sources générée automatiquement (faire attention aux dépendances de ces .c)
+H = $(wildcard $(header)/*.h) #liste de nos fichiers .h générée automatiquement
 OBJ = $(SRC:.c=.o) #génération automatique de la liste des fichiers objets à partir de la liste des fichiers sources
 
 
