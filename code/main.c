@@ -1,5 +1,5 @@
-#include "header/convertion_hexa.h"
-#include "header/traitement_instructions.h"
+#include "../header/convertion_hexa.h"
+#include "../header/traitement_instructions.h"
 
 int main(int argc, char const *argv[])
 {
@@ -11,4 +11,5 @@ int main(int argc, char const *argv[])
   lireDonnees(fichier_src,fichier_out);
 
   return 0;
+  
 }

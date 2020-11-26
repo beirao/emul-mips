@@ -7,6 +7,7 @@
 #include <string.h>
 #include <unistd.h>
 
+
 int testChaine(char chaine[], char mot[]);
 int conversionHexa(char chaine[], int argument[]);
 int rType(int rd, int rs, int rt, int sa, int function);

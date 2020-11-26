@@ -1,9 +1,9 @@
-#include "header/convertion_hexa.h"
+#include "../header/convertion_hexa.h"
 
 
 int conversionHexa(char chaine[], int argument[]){
     int hexa = 0, function = 0, op_code = 0;
-
+    
     /* ___R-TYPE___ */
 
     /* Nous avons regroupé les instructions de même format ensemble */

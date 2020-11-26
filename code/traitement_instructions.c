@@ -1,10 +1,9 @@
-#include "header/traitement_instructions.h"
-#include "header/convertion_hexa.h"
+#include "../header/traitement_instructions.h"
+#include "../header/convertion_hexa.h"
 
 
 void lireDonnees(char fichier_commande[], char fichier_hexa[])
 {
-
     char *init_chain = "";
     char chaine[TAILLE_MAX] = "";
     char *chaine_normalise = "";

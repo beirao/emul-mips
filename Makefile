@@ -1,11 +1,14 @@
+CODEDIR = code
+HEADERDIR = header
+
 
 CC = gcc
-CFLAGS = -g -W -Wall -ansi -pedantic
+CFLAGS = -g -W -Wall -ansi -pedantic -Iheader
 LDFLAGS = -lm
 EXEC = emul_mips #UNIQUE CHANGEMENT A FAIRE EN FONCTION DU NOM VOULU POUR L'EXECUTABLE
-SRC = $(wildcard $(code)/*.c) #liste de nos fichiers sources générée automatiquement (faire attention aux dépendances de ces .c)
-H = $(wildcard $(header)/*.h) #liste de nos fichiers .h générée automatiquement
-OBJ = $(SRC:.c=.o) #génération automatique de la liste des fichiers objets à partir de la liste des fichiers sources
+SRC = $(wildcard $(CODEDIR)/*.c) #liste de nos fichiers sources générée automatiquement (faire attention aux dépendances de ces .c)
+H = $(wildcard $(HEADERDIR)/*.h) #liste de nos fichiers .h générée automatiquement
+OBJ = $(SRC:$(CODEDIR)/%.c=./%.o) #génération automatique de la liste des fichiers objets à partir de la liste des fichiers sources
 
 
 all: $(EXEC)
@@ -13,9 +16,7 @@ all: $(EXEC)
 $(EXEC): $(OBJ)
 	@$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o: $(H) #déclaration des dépendances (ici tous les .o dépendent de tous les .h)
-
-%.o: %.c #règle générique pour la construction d'un .o à partir d'un .c)
+%.o: $(CODEDIR)/%.c $(H)   #règle générique pour la construction d'un .o à partir d'un .c)
 	@$(CC) -o $@ -c $< $(CFLAGS)
 
 
