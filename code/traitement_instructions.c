@@ -1,5 +1,5 @@
 #include "../header/traitement_instructions.h"
-#include "../header/convertion_hexa.h"
+#include "../header/conversion_hexa.h"
 
 
 void lireDonnees(char fichier_commande[], char fichier_hexa[])

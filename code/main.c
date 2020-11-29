@@ -1,4 +1,4 @@
-#include "../header/convertion_hexa.h"
+#include "../header/conversion_hexa.h"
 #include "../header/traitement_instructions.h"
 
 int main(int argc, char const *argv[])

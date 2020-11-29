@@ -1,4 +1,4 @@
-#include "../header/convertion_hexa.h"
+#include "../header/conversion_hexa.h"
 
 
 int conversionHexa(char chaine[], int argument[]){
