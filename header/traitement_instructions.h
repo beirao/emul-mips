@@ -11,10 +11,12 @@
 
 
 FILE *ouvertureFichier(char *chemin_fichier, char *mode);
-void lireDonnees(char fichier_commande[], char fichier_hexa[]);
+void lireDonnees(char fichier_commande[], int memoire[]);
 char *traitementChaine(char *chaine);
 void argumentToTab(char *chaine, int *argument);
-void pushHexa(int hexa, FILE *fichier_arrive, int sw_lw);
+
+/*void lireDonnees(char fichier_commande[], char fichier_hexa[]);
+void pushHexa(int hexa, FILE *fichier_arrive, int sw_lw);*/
 
 
 #endif
