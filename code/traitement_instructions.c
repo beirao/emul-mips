@@ -1,25 +1,24 @@
 #include "../header/traitement_instructions.h"
 #include "../header/conversion_hexa.h"
+#include "../header/memoire.h"
 
 
-void lireDonnees(char fichier_commande[], char fichier_hexa[])
+void lireDonnees(char fichier_commande[], int memoire[])
 {
     char *init_chain = "";
     char chaine[TAILLE_MAX] = "";
     char *chaine_normalise = "";
     int hexa = 0;
     int argument[4];
-    int sw_lw = 0;
+    int index_memoire = 0;
+    int option = 0; 
 
     FILE *fichier_depart;
-    FILE *fichier_arrive;
 
     fichier_depart = ouvertureFichier(fichier_commande, "r");
-    fichier_arrive = ouvertureFichier(fichier_hexa, "w");
 
     while(fgets(chaine, TAILLE_MAX, fichier_depart) != NULL)
     {
-        sw_lw = 0;
         hexa = 0;
         chaine[TAILLE_MAX] = *init_chain;
 
@@ -40,15 +39,12 @@ void lireDonnees(char fichier_commande[], char fichier_hexa[])
         /* Affichage console */
         printf("%x\n", hexa);
 
-        /* Ecriture dans le fichier hexa */
-        if(testChaine(chaine_normalise, "LW ") || testChaine(chaine_normalise, "SW ")) sw_lw = 1; /* Resolution d'un bug d'ecriture avec ces deux instructions */
-        pushHexa(hexa, fichier_arrive, sw_lw);
-
+        ecritureMemoire(memoire, index_memoire, hexa, option);
+        index_memoire++;
     }
 
     printf("-------------------------------------\n");
     fclose(fichier_depart);
-    fclose(fichier_arrive);
 }
 
 char *traitementChaine(char *chaine){
@@ -168,23 +164,6 @@ void argumentToTab(char *chaine, int *argument){
     argument[i_arg] = '\0';
 }
 
-void pushHexa(int hexa, FILE *fichier_arrive, int sw_lw){
-
-    if(sw_lw == 0){
-        /*padding*/
-
-        if(hexa < 0xF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFFFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFFFFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFFFFFF) fprintf(fichier_arrive, "0");
-    }
-
-    fprintf(fichier_arrive, "%x\n", hexa);
-}
-
 FILE *ouvertureFichier(char *chemin_fichier, char *mode)
 {
     FILE *fichier;
@@ -199,3 +178,18 @@ FILE *ouvertureFichier(char *chemin_fichier, char *mode)
     return fichier;
 }
 
+/*void pushHexa(int hexa, FILE *fichier_arrive, int sw_lw){
+
+    if(sw_lw == 0){
+
+        if(hexa < 0xF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFFFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFFFFF) fprintf(fichier_arrive, "0");
+        if(hexa < 0xFFFFFFF) fprintf(fichier_arrive, "0");
+    }
+
+    fprintf(fichier_arrive, "%x\n", hexa);
+}*/

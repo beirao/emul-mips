@@ -1,14 +1,34 @@
-#include "../header/conversion_hexa.h"
 #include "../header/traitement_instructions.h"
+#include "../header/memoire.h"
+#include "../header/registre.h"
+
 
 int main(int argc, char const *argv[])
 {
   char fichier_src[TAILLE_MAX] = "src/";
-  char fichier_out[TAILLE_MAX] = "out/";
 
+  int *registre, *HiLo, *memoire;
+  int *PC = 0;
+
+  
+  memoire = malloc(128*sizeof(int));
+  registre = malloc(32*sizeof(int));
+  HiLo = malloc(2*sizeof(int)); 
+  
+  affichageRegistre(registre, HiLo, PC);
+
+  if(registre == NULL || HiLo == NULL || memoire == NULL ) printf("ERREUR : malloc");
+  
   strcat(fichier_src, argv[1]);
-  strcat(fichier_out, argv[2]);
-  lireDonnees(fichier_src,fichier_out);
+
+  lireDonnees(fichier_src,memoire);
+  
+  affichageMemoire(memoire);
+  affichageRegistre(registre, HiLo, PC);
+  
+  free(registre);
+  free(HiLo);
+  free(memoire);
 
   return 0;
   
