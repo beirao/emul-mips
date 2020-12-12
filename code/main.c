@@ -1,6 +1,8 @@
 #include "../header/traitement_instructions.h"
 #include "../header/memoire.h"
 #include "../header/registre.h"
+#include "../header/def_instructions.h"
+#include "../header/exec_instructions.h"
 
 
 int main(int argc, char const *argv[])
@@ -8,28 +10,41 @@ int main(int argc, char const *argv[])
   char fichier_src[TAILLE_MAX] = "src/";
 
   int *registre, *HiLo, *memoire;
-  int *PC = 0;
+  int *PC = NULL;
 
-  
-  memoire = malloc(128*sizeof(int));
-  registre = malloc(32*sizeof(int));
-  HiLo = malloc(2*sizeof(int)); 
-  
+    /* Variables de test */
+  int hexa = 0;
+    /* Fin */
+
+  memoire = malloc(TAILLE_MEMOIRE*sizeof(int));
+  registre = malloc(TAILLE_REGISTRE*sizeof(int));
+  HiLo = malloc(TAILLE_HILO*sizeof(int));
+
+  if(registre == NULL || HiLo == NULL || memoire == NULL ) printf("ERREUR : malloc\n");
+
+
   affichageRegistre(registre, HiLo, PC);
 
-  if(registre == NULL || HiLo == NULL || memoire == NULL ) printf("ERREUR : malloc");
-  
   strcat(fichier_src, argv[1]);
 
   lireDonnees(fichier_src,memoire);
-  
+  PC = memoire;
+
+
+    /* Zone de Tests */
+  ecritureRegistre(registre, 8, 2147483647);
+  ecritureRegistre(registre, 9, 1);
+  hexa = lireMemoire(PC, 0);
+  add(registre, hexa);
+    /* Fin */
+
+
   affichageMemoire(memoire);
   affichageRegistre(registre, HiLo, PC);
-  
+
   free(registre);
   free(HiLo);
   free(memoire);
 
   return 0;
-  
 }

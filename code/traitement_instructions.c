@@ -11,11 +11,13 @@ void lireDonnees(char fichier_commande[], int memoire[])
     int hexa = 0;
     int argument[4];
     int index_memoire = 0;
-    int option = 0; 
+    int option = 0;
 
     FILE *fichier_depart;
 
     fichier_depart = ouvertureFichier(fichier_commande, "r");
+    printf("=========================================================\n");
+    printf("Conversion des instructions en hexadecimal :\n");
 
     while(fgets(chaine, TAILLE_MAX, fichier_depart) != NULL)
     {
@@ -43,7 +45,7 @@ void lireDonnees(char fichier_commande[], int memoire[])
         index_memoire++;
     }
 
-    printf("-------------------------------------\n");
+    printf("=========================================================\n\n\n");
     fclose(fichier_depart);
 }
 
@@ -152,7 +154,7 @@ void argumentToTab(char *chaine, int *argument){
                 argument[i_arg] += chaine[i_chaine] - '0';
                 i_chaine++;
             }
-            argument[i_arg] = -1 * argument[i_arg];    
+            argument[i_arg] = -1 * argument[i_arg];
             i_arg++;
         }
 

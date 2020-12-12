@@ -14,11 +14,11 @@ void ecritureMemoire(int memoire[], int index_memoire, int valeur, int option){
 
 void affichageMemoire(int memoire[]){
     int i;
-    printf("-------------------------------------\n");
+    printf("=========================================================\n");
     printf("Memoire : \n");
     for ( i = 0; i < TAILLE_MEMOIRE ; i++){
         printf("%x ", memoire[i]);
         if(i%16 == 15 ) printf("\n");
     }
-    printf("-------------------------------------\n");
+    printf("=========================================================\n\n\n");
 }

@@ -1,13 +1,13 @@
 #include "../header/registre.h"
 
 
-/*id_registre : 
+/*id_registre :
 $zero    = 0
 $at      = 1
 $v0->$v1 = 2->3
 $a0->$a3 = 4->7
 $t0->$t7 = 8->15
-$s0->$s7 = 16->25 
+$s0->$s7 = 16->25
 $t8->$t9 = 24->25
 $k0->$k1 = 26->27
 $gp      = 28
@@ -19,6 +19,26 @@ $LO      = 33
 $PC      = 34
 */
 
+int lireRegistre(int reg[], int id_registre){
+    if(id_registre >= 0 && id_registre <= 31){
+        return reg[id_registre];
+    }
+    else if(id_registre == 32){
+        return reg[0];
+    }
+    else if(id_registre == 33){
+        return reg[1];
+    }
+    else if(id_registre == 34){
+        return *reg;
+    }
+    else{
+        fprintf(strerror, "ERREUR : id registre non defini\n");
+        return(0);
+    }
+}
+
+/*
 int lireRegistre(int registre[], int HiLo[], int *PC , int id_registre){
     if(id_registre >= 0 && id_registre <= 31){
         return registre[id_registre];
@@ -30,16 +50,37 @@ int lireRegistre(int registre[], int HiLo[], int *PC , int id_registre){
         return HiLo[1];
     }
     else if(id_registre == 34){
-        return PC;
+        return *PC;
     }
     else{
-        fprintf(strerror, "ERREUR : id registre non definie");
+        fprintf(strerror, "ERREUR : id registre non defini\n");
+    }
+}
+*/
+
+
+void ecritureRegistre(int reg[], int id_registre, int valeur){
+    /* On empêche l'écriture dans les registres qui sont réservés ou auxquels on préfère eviter de toucher (cf Annexe 1 page 9) */
+    if(id_registre > 1 && id_registre <= 31 && id_registre != 26 && id_registre != 27 && id_registre != 28 && id_registre != 30){
+        reg[id_registre] = valeur;
+    }
+    else if(id_registre == 32){
+        reg[0] = valeur;
+    }
+    else if(id_registre == 33){
+        reg[1] = valeur;
+    }
+    else if(id_registre == 34){
+        *reg = valeur;
+    }
+    else{
+        fprintf(strerror, "ERREUR : id registre invalide (non defini ou registre inaccessible)\n");
     }
 }
 
-
+/*
 void ecritureRegistre(int registre[], int HiLo[], int *PC, int id_registre, int valeur){
-    if(id_registre >= 0 && id_registre <= 31){
+    if(id_registre > 1 && id_registre <= 31 && id_registre != 26 && id_registre != 27 && id_registre != 28 && id_registre != 30){
         registre[id_registre] = valeur;
     }
     else if(id_registre == 32){
@@ -49,21 +90,21 @@ void ecritureRegistre(int registre[], int HiLo[], int *PC, int id_registre, int 
         HiLo[1] = valeur;
     }
     else if(id_registre == 34){
-        PC = valeur;
+        *PC = valeur;
     }
     else{
-        fprintf(strerror, "ERREUR : id registre non definie");
+        fprintf(strerror, "ERREUR : id registre invalide (non defini ou registre inaccessible)\n");
     }
-
 }
+*/
 
-/*id_registre : 
+/*id_registre :
 $zero    = 0
 $at      = 1
 $v0->$v1 = 2->3
 $a0->$a3 = 4->7
 $t0->$t7 = 8->15
-$s0->$s7 = 16->25 
+$s0->$s7 = 16->25
 $t8->$t9 = 24->25
 $k0->$k1 = 26->27
 $gp      = 28
@@ -75,9 +116,9 @@ $LO      = 33
 $PC      = 34
 */
 void affichageRegistre(int registre[], int HiLo[], int *PC){
-    
-    printf("-------------------------------------\n");
-    printf("Registre : \n");
+
+    printf("=========================================================\n");
+    printf("Registres : \n");
 
     printf("$zero = %d \n",registre[0]);
     printf("$at = %d \n",registre[1]);
@@ -91,11 +132,12 @@ void affichageRegistre(int registre[], int HiLo[], int *PC){
     printf("$sp = %d \n",registre[29]);
     printf("$fp = %d \n",registre[30]);
     printf("$ra = %d \n",registre[31]);
-    
 
-    printf("$HI = %d | LO = %d \n", registre[32], registre[33]);
-    printf("$PC = %d \n",registre[34]);
+    printf("$HI = %d | LO = %d \n", HiLo[0], HiLo[1]);
+
+    if(PC == NULL) printf("$PC = 0 \n");
+    else printf("$PC = %p \n",PC); /* Engendre un warning car PC n'est pas de type void *, mais la solution proposée (%ls) n'est pas prise en compte par la norme ISO C90, nous utilisons donc %p */
 
 
-    printf("-------------------------------------\n");
+    printf("=========================================================\n\n\n");
 }
