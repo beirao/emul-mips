@@ -37,7 +37,7 @@ int masque(int bit_haut, int bit_bas, int hexa)
 {
   int m = 0, i = 0;
   hexa = hexa >> bit_bas;
-  for(i=0; i < (bit_haut-bit_bas) ;i++)
+  for(i=0; i <= (bit_haut-bit_bas) ;i++)
   {
     m = m << 1;
     m++;

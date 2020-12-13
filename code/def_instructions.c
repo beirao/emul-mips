@@ -21,13 +21,13 @@ void addi(int registre[], int hexa)
   else ecritureRegistre(registre, rt(hexa), add);
 }
 
-/*
+
 void and(int registre[], int hexa)
 {
-
+  ecritureRegistre(registre, rd(hexa), (lireRegistre(registre, rs(hexa)) & lireRegistre(registre, rt(hexa))));
 }
 
-
+/*
 void beq(int registre[], int hexa, int *PC)
 {
 

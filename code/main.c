@@ -40,7 +40,7 @@ int main(int argc, char const *argv[])
   addi(registre, hexa);
   hexa = lireMemoire(PC, 0);
   PC++;
-  addi(registre, hexa);
+  and(registre, hexa);
   hexa = lireMemoire(PC, 0);
   PC++;
   add(registre, hexa);
