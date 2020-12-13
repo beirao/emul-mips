@@ -4,7 +4,7 @@
 
 void add(int registre[], int hexa)
 {
-  unsigned long add = 0;
+  long add = 0;
   add = (lireRegistre(registre, rs(hexa)) + lireRegistre(registre, rt(hexa)));
 
   if(add >= pow(2,31)) printf("IntegerOverflow pour ADD\n");
@@ -14,7 +14,7 @@ void add(int registre[], int hexa)
 
 void addi(int registre[], int hexa)
 {
-  unsigned long add = 0;
+  long add = 0;
   add = (lireRegistre(registre, rs(hexa)) + immediate(hexa));
 
   if(add >= pow(2,31)) printf("IntegerOverflow pour ADDI\n");
@@ -27,55 +27,74 @@ void and(int registre[], int hexa)
   ecritureRegistre(registre, rd(hexa), (lireRegistre(registre, rs(hexa)) & lireRegistre(registre, rt(hexa))));
 }
 
+
+int *beq(int registre[], int hexa, int *PC)
+{
+  if(lireRegistre(registre, rs(hexa)) == lireRegistre(registre, rt(hexa)))
+  {
+    PC += immediate(hexa);
+  }
+  return PC;
+}
+
+
+int *bgtz(int registre[], int hexa, int *PC)
+{
+  if(lireRegistre(registre, rs(hexa)) > 0)
+  {
+    PC += immediate(hexa);
+  }
+  return PC;
+}
+
+
+int *blez(int registre[], int hexa, int *PC)
+{
+  if(lireRegistre(registre, rs(hexa)) <= 0)
+  {
+    PC += immediate(hexa);
+  }
+  return PC;
+}
+
+
+int *bne(int registre[], int hexa, int *PC)
+{
+  if(lireRegistre(registre, rs(hexa)) != lireRegistre(registre, rt(hexa)))
+  {
+    PC += immediate(hexa);
+  }
+  return PC;
+}
+
 /*
-void beq(int registre[], int hexa, int *PC)
+int *j(int registre[], int hexa, int *PC)
+{
+  if(lireRegistre(registre, rs(hexa)) == lireRegistre(registre, rt(hexa)))
+  {
+    PC = (immediate(hexa) << 2) + ((unsigned int)PC & 4026531840);
+  }
+}
+
+
+int *jal(int registre[], int hexa, int *PC)
 {
 
 }
 
 
-void bgtz(int registre[], int hexa, int *PC)
+int *jr(int registre[], int hexa, int *PC)
 {
 
 }
-
-
-void blez(int registre[], int hexa, int *PC)
-{
-
-}
-
-
-void bne(int registre[], int hexa, int *PC)
-{
-
-}
-
-
-void j(int registre[], int hexa, int *PC)
-{
-
-}
-
-
-void jal(int registre[], int hexa, int *PC)
-{
-
-}
-
-
-void jr(int registre[], int hexa, int *PC)
-{
-
-}
-
+*/
 
 void lui(int registre[], int hexa)
 {
-
+  ecritureRegistre(registre, rt(hexa), (immediate(hexa) << 16));
 }
 
-
+/*
 void lw(int registre[], int hexa, int memoire[])
 {
 

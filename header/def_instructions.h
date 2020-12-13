@@ -8,23 +8,21 @@
 #include <unistd.h>
 #include "../header/exec_instructions.h"
 
+#define immediate(hexa)  (short)masque(15,0,hexa) /* Le (short) permet de respecter le signe de la valeur dans le champs "immediate" */
+#define rd(hexa)  masque(15,11,hexa)
 #define rs(hexa)  masque(25,21,hexa)
 #define rt(hexa)  masque(20,16,hexa)
-#define rd(hexa)  masque(15,11,hexa)
-#define immediate(hexa) masque(15,0,hexa)
-
-
 
 void add(int registre[], int hexa);
 void addi(int registre[], int hexa);
 void and(int registre[], int hexa);
-void beq(int registre[], int hexa, int *PC);
-void bgtz(int registre[], int hexa, int *PC);
-void blez(int registre[], int hexa, int *PC);
-void bne(int registre[], int hexa, int *PC);
-void j(int registre[], int hexa, int *PC);
-void jal(int registre[], int hexa, int *PC);
-void jr(int registre[], int hexa, int *PC);
+int *beq(int registre[], int hexa, int *PC);
+int *bgtz(int registre[], int hexa, int *PC);
+int *blez(int registre[], int hexa, int *PC);
+int *bne(int registre[], int hexa, int *PC);
+int *j(int registre[], int hexa, int *PC);
+int *jal(int registre[], int hexa, int *PC);
+int *jr(int registre[], int hexa, int *PC);
 void lui(int registre[], int hexa);
 void lw(int registre[], int hexa, int memoire[]);
 void mfhi(int registre[], int hexa);

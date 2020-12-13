@@ -10,10 +10,7 @@
 #define TAILLE_REGISTRE 32
 #define TAILLE_HILO 2
 
-/*
-int lireRegistre(int registre[], int HiLo[], int *PC , int id_registre);
-void ecritureRegistre(int registre[], int HiLo[], int *PC, int id_registre, int valeur);
-*/
+
 int lireRegistre(int reg[], int id_registre);
 void ecritureRegistre(int reg[], int id_registre, int valeur);
 void affichageRegistre(int registre[], int HiLo[], int *PC);

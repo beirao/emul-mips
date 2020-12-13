@@ -4,9 +4,12 @@
 
 /*
 void exec(int registre[], int memoire[], int HiLo[], int *PC)
-{
+{*/
 
-}
+
+
+  /* Il faudra incrementer PC après chaque instructions SAUF s'il y a eu une instruction de branchement (faire une comparaison avec PC avant/après l'instruction) */
+/*}
 
 
 void appelR(int registre[], int hexa, int HiLo[])

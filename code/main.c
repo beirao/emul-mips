@@ -33,17 +33,22 @@ int main(int argc, char const *argv[])
 
     /* Zone de Tests */
   hexa = lireMemoire(PC, 0);
-  PC++;
   addi(registre, hexa);
-  hexa = lireMemoire(PC, 0);
   PC++;
+  hexa = lireMemoire(PC, 0);
   addi(registre, hexa);
-  hexa = lireMemoire(PC, 0);
   PC++;
-  and(registre, hexa);
+
   hexa = lireMemoire(PC, 0);
+  lui(registre, hexa);
   PC++;
+
+  hexa = lireMemoire(PC, 0);
   add(registre, hexa);
+  PC++;
+  hexa = lireMemoire(PC, 0);
+  add(registre, hexa);
+  PC++;
     /* Fin */
 
 
