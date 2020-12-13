@@ -33,7 +33,7 @@ int lireRegistre(int reg[], int id_registre){
         return *reg;
     }
     else{
-        fprintf(strerror, "ERREUR : id registre non defini\n");
+        printf("ERREUR : id registre non defini\n");
         return(0);
     }
 }
@@ -74,7 +74,7 @@ void ecritureRegistre(int reg[], int id_registre, int valeur){
         *reg = valeur;
     }
     else{
-        fprintf(strerror, "ERREUR : id registre invalide (non defini ou registre inaccessible)\n");
+        printf("ERREUR : id registre invalide (non defini ou registre inaccessible)\n");
     }
 }
 

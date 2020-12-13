@@ -11,6 +11,7 @@
 #define rs(hexa)  masque(25,21,hexa)
 #define rt(hexa)  masque(20,16,hexa)
 #define rd(hexa)  masque(15,11,hexa)
+#define immediate(hexa) masque(15,0,hexa)
 
 
 

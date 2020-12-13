@@ -3,7 +3,7 @@
 
 int conversionHexa(char chaine[], int argument[]){
     int hexa = 0, function = 0, op_code = 0;
-    
+
     /* ___R-TYPE___ */
 
     /* Nous avons regroupé les instructions de même format ensemble */
@@ -125,14 +125,23 @@ int conversionHexa(char chaine[], int argument[]){
     return hexa;
 }
 
+
+
 int rType(int rd, int rs, int rt, int sa, int function){
     int hexa = 0;
 
-    hexa += function;
-    hexa += sa << 6;
-    hexa += rd << 11;
-    hexa += rt << 16;
-    hexa += rs << 21;
+    if((rd < 32) && (rt < 32) && (rs < 32) && (sa < 32))
+    {
+      hexa += function;
+      hexa += sa << 6;
+      hexa += rd << 11;
+      hexa += rt << 16;
+      hexa += rs << 21;
+    }
+    else
+    {
+      printf("Erreur : Overflow valeur (registre ou sa)\n");
+    }
 
     return hexa;
 }
@@ -140,10 +149,17 @@ int rType(int rd, int rs, int rt, int sa, int function){
 int iType(int op_code, int rt, int rs, int immediate){
     int hexa = 0;
 
-    hexa += immediate;
-    hexa += rt << 16;
-    hexa += rs << 21;
-    hexa += op_code << 26;
+    if((immediate < pow(2,15)) && (rt < 32) && (rs < 32))
+    {
+      hexa += immediate;
+      hexa += rt << 16;
+      hexa += rs << 21;
+      hexa += op_code << 26;
+    }
+    else
+    {
+      printf("Erreur : Overflow valeur (immediate, offset ou registre)\n");
+    }
 
     return hexa;
 }
@@ -151,11 +167,20 @@ int iType(int op_code, int rt, int rs, int immediate){
 int jType(int op_code, int target){
     int hexa = 0;
 
-    hexa += target;
-    hexa += op_code << 26;
+    if(target < pow(2,26))
+    {
+      hexa += target;
+      hexa += op_code << 26;
+    }
+    else
+    {
+      printf("Erreur : Overflow valeur\n");
+    }
 
     return hexa;
 }
+
+
 
 int testChaine(char chaine[], char mot[]){
     long unsigned int i;

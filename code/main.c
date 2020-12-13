@@ -32,9 +32,17 @@ int main(int argc, char const *argv[])
 
 
     /* Zone de Tests */
-  ecritureRegistre(registre, 8, 2147483647);
-  ecritureRegistre(registre, 9, 1);
   hexa = lireMemoire(PC, 0);
+  PC++;
+  addi(registre, hexa);
+  hexa = lireMemoire(PC, 0);
+  PC++;
+  addi(registre, hexa);
+  hexa = lireMemoire(PC, 0);
+  PC++;
+  addi(registre, hexa);
+  hexa = lireMemoire(PC, 0);
+  PC++;
   add(registre, hexa);
     /* Fin */
 

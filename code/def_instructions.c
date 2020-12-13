@@ -8,16 +8,20 @@ void add(int registre[], int hexa)
   add = (lireRegistre(registre, rs(hexa)) + lireRegistre(registre, rt(hexa)));
 
   if(add >= pow(2,31)) printf("IntegerOverflow pour ADD\n");
-  else ecritureRegistre(registre, rd(hexa), (lireRegistre(registre, rs(hexa)) + lireRegistre(registre, rt(hexa))));
+  else ecritureRegistre(registre, rd(hexa), add);
+}
+
+
+void addi(int registre[], int hexa)
+{
+  unsigned long add = 0;
+  add = (lireRegistre(registre, rs(hexa)) + immediate(hexa));
+
+  if(add >= pow(2,31)) printf("IntegerOverflow pour ADDI\n");
+  else ecritureRegistre(registre, rt(hexa), add);
 }
 
 /*
-void addi(int registre[], int hexa)
-{
-
-}
-
-
 void and(int registre[], int hexa)
 {
 
