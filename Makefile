@@ -3,7 +3,7 @@ HEADERDIR = header
 
 
 CC = gcc
-CFLAGS = -g -W -Wall -ansi -pedantic -Iheader
+CFLAGS = -g -W -Wall -ansi -pedantic -Iheader #mettre -ansi pour norme C90
 LDFLAGS = -lm
 EXEC = emul_mips #UNIQUE CHANGEMENT A FAIRE EN FONCTION DU NOM VOULU POUR L'EXECUTABLE
 SRC = $(wildcard $(CODEDIR)/*.c) #liste de nos fichiers sources générée automatiquement (faire attention aux dépendances de ces .c)

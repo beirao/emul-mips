@@ -32,6 +32,7 @@ int main(int argc, char const *argv[])
 
 
     /* Zone de Tests */
+    /*
   hexa = lireMemoire(PC, 0);
   addi(registre, hexa);
   PC++;
@@ -49,6 +50,16 @@ int main(int argc, char const *argv[])
   hexa = lireMemoire(PC, 0);
   add(registre, hexa);
   PC++;
+    */
+
+  ecritureRegistre(registre, 8, 38);
+  ecritureRegistre(registre, 9, 39);
+  affichageRegistre(registre, HiLo, PC);
+  hexa = lireMemoire(PC, 0);
+  slt(registre, hexa);
+  PC++;
+
+
     /* Fin */
 
 
