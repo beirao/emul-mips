@@ -34,6 +34,32 @@ void exec(int registre[], int memoire[], int HiLo[], int *PC)
   }
 }
 
+int *exec_pas(int registre[], int memoire[], int HiLo[], int *PC)
+{
+  int type; 
+  int * PCinitial;
+
+  PCinitial = PC;
+  type = masque(31,26,*PC);
+
+  if(type == 0){                                    /*Rtype*/
+    appelR(registre, *PC, HiLo, PC);
+  }
+
+  else if(type == 3 || type == 2){                  /*Jtype*/
+    appelJ(registre, *PC, PC);
+  }
+
+  else{                                             /*Itype*/
+    appelI(registre, memoire, PC, *PC);
+  }
+
+  if(PCinitial == PC){
+    PC++;
+  }
+  return PC;
+}
+
 
 /* Il faudra incrementer PC après chaque instructions SAUF s'il y a eu une instruction de branchement (faire une comparaison avec PC avant/après l'instruction) */
 
@@ -72,13 +98,13 @@ void appelI(int registre[], int memoire[], int *PC, int hexa)
 
   switch (opcode)
   {
-  case 8 : addi(registre, hexa); break;
-  case 4 : PC = beq(registre, hexa, PC); break;
+  case 8 : addi(registre, hexa);          break;
+  case 4 : PC = beq(registre, hexa, PC);  break;
   case 7 : PC = bgtz(registre, hexa, PC); break;
   case 6 : PC = blez(registre, hexa, PC); break;
-  case 5 : PC = bne(registre, hexa, PC); break;
-  case 35 : lw(registre, hexa, memoire); break;
-  case 43 : sw(registre, hexa, memoire); break;
+  case 5 : PC = bne(registre, hexa, PC);  break;
+  case 35 : lw(registre, hexa, memoire);  break;
+  case 43 : sw(registre, hexa, memoire);  break;
   case 15 : lui(registre, hexa); break;
   
   default: printf("ERREUR : instruction non definie"); break;

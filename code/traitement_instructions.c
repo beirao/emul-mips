@@ -1,54 +1,10 @@
 #include "../header/traitement_instructions.h"
 #include "../header/conversion_hexa.h"
 #include "../header/memoire.h"
+#include "../header/registre.h"
+#include "../header/exec_instructions.h"
 
 
-void lireDonnees(char fichier_commande[], int memoire[])
-{
-    char *init_chain = "";
-    char chaine[TAILLE_MAX] = "";
-    char *chaine_normalise = "";
-    int hexa = 0;
-    int argument[4];
-    int index_memoire = 0;
-    int option = 0;
-
-    FILE *fichier_depart;
-
-    fichier_depart = ouvertureFichier(fichier_commande, "r");
-    printf("=========================================================\n");
-    printf("Conversion des instructions en hexadecimal :\n");
-
-    while(fgets(chaine, TAILLE_MAX, fichier_depart) != NULL)
-    {
-        hexa = 0;
-        chaine[TAILLE_MAX] = *init_chain;
-
-        /* Recuperation et traitement de l'instruction */
-        chaine_normalise = traitementChaine(chaine); /*Normalise la chaine en enlevant tout les espaces inutiles*/
-
-        /* Affichage console */
-        printf("-------------------------------------\n");
-        printf("%s\n", chaine_normalise);
-
-        /* Conversion de l'instruction en hexadecimal */
-        argumentToTab(chaine_normalise, argument); /*met les arguments de l'instruction dans le tableau argument */
-        hexa = conversionHexa(chaine_normalise, argument); /*fonction qui produit le code hexa avec les arguments et la chaine normalisée*/
-
-        /* Traitement des lignes de commentaires, des lignes vides et des instructions invalides (hexa = 0 sauf NOP) => pas d'ecriture dans le fichier hexa, retour au debut du while */
-        if(chaine_normalise[0] == '#' || (chaine_normalise[0] != 'N' && hexa == 0)) continue;
-
-        /* Affichage console */
-        printf("%x\n", hexa);
-
-        ecritureMemoire(memoire, index_memoire, hexa, option);
-        index_memoire++;
-    }
-    memoire[index_memoire] = END; /*signifier la fin du fichier : utile dans exec_instructions.*/
-
-    printf("=========================================================\n\n\n");
-    fclose(fichier_depart);
-}
 
 char *traitementChaine(char *chaine){
     int i_chaine = 0, i_ie = 0, i_resultat = 0, i_temp = 0, nb_if = 0;

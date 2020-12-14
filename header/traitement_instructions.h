@@ -11,7 +11,6 @@
 
 
 FILE *ouvertureFichier(char *chemin_fichier, char *mode);
-void lireDonnees(char fichier_commande[], int memoire[]);
 char *traitementChaine(char *chaine);
 void argumentToTab(char *chaine, int *argument);
 
