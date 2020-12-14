@@ -44,6 +44,7 @@ void lireDonnees(char fichier_commande[], int memoire[])
         ecritureMemoire(memoire, index_memoire, hexa, option);
         index_memoire++;
     }
+    memoire[index_memoire] = END; /*signifier la fin du fichier : utile dans exec_instructions.*/
 
     printf("=========================================================\n\n\n");
     fclose(fichier_depart);

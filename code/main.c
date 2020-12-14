@@ -30,8 +30,9 @@ int main(int argc, char const *argv[])
   lireDonnees(fichier_src,memoire);
   PC = memoire;
 
+  exec(registre, memoire, HiLo, PC);
 
-    /* Zone de Tests */
+    /* 
   hexa = lireMemoire(PC, 0);
   addi(registre, hexa);
   PC++;
@@ -49,7 +50,7 @@ int main(int argc, char const *argv[])
   hexa = lireMemoire(PC, 0);
   add(registre, hexa);
   PC++;
-    /* Fin */
+     */
 
 
   affichageMemoire(memoire);

@@ -1,16 +1,39 @@
 #include "../header/exec_instructions.h"
 #include "../header/memoire.h"
 #include "../header/registre.h"
+#include "../header/def_instructions.h"
+#include "../header/traitement_instructions.h"
 
-/*
+
 void exec(int registre[], int memoire[], int HiLo[], int *PC)
-{}*/
+{
+  int type, i = 0, PCinitial;
+
+  while (*PC != END)
+  {
+    PCinitial = PC;
+    type = masque(31,26,*PC);
+
+    if(type == 0){                                    /*Rtype*/
+      appelR(registre, *PC, HiLo, PC);
+    }
+
+    else if(type == 0b000011 || type == 0b000010){    /*Jtype*/
+      appelJ(registre, *PC, PC);
+    }
+
+    else{                                             /*Itype*/
+      appelI(registre, memoire, PC, *PC);
+    }
+
+    if(PCinitial == PC){
+      PC++;
+    }
+  }
+}
 
 
-
-  /* Il faudra incrementer PC après chaque instructions SAUF s'il y a eu une instruction de branchement (faire une comparaison avec PC avant/après l'instruction) */
-
-
+/* Il faudra incrementer PC après chaque instructions SAUF s'il y a eu une instruction de branchement (faire une comparaison avec PC avant/après l'instruction) */
 
 void appelR(int registre[], int hexa, int HiLo[], int *PC)
 {

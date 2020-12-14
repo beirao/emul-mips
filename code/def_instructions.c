@@ -67,108 +67,111 @@ int *bne(int registre[], int hexa, int *PC)
   return PC;
 }
 
-/*
+
 int *j(int registre[], int hexa, int *PC)
 {
   if(lireRegistre(registre, rs(hexa)) == lireRegistre(registre, rt(hexa)))
   {
     PC = (immediate(hexa) << 2) + ((unsigned int)PC & 4026531840);
   }
+  return 0;
 }
 
 
 int *jal(int registre[], int hexa, int *PC)
 {
-
+  printf("lol");
+  return 0;
 }
 
 
 int *jr(int registre[], int hexa, int *PC)
 {
-
+  printf("lol");
+  return 0;
 }
-*/
+
 
 void lui(int registre[], int hexa)
 {
   ecritureRegistre(registre, rt(hexa), (immediate(hexa) << 16));
 }
 
-/*
+
 void lw(int registre[], int hexa, int memoire[])
 {
-
+  printf("lol");
 }
 
 
 void mfhi(int registre[], int hexa)
 {
-
+  printf("lol");
 }
 
 
 void mflo(int registre[], int hexa)
 {
-
+  printf("lol");
 }
 
 
 void mult(int registre[], int hexa, int HiLo[])
 {
-
+  printf("lol");
 }
 
 
 void divi(int registre[], int hexa, int HiLo[])
 {
-
+  printf("lol");
 }
 
 
 void or(int registre[], int hexa)
 {
-
+  printf("lol");
 }
 
 
 void rotr(int registre[], int hexa)
 {
-
+  printf("lol");
 }
 
 
 void sll(int registre[], int hexa)
 {
-
+  printf("lol");
 }
 
 
 void slt(int registre[], int hexa)
 {
-
+  printf("lol");
 }
 
 
 void srl(int registre[], int hexa)
 {
-
+  printf("lol");
 }
 
 
 void sub(int registre[], int hexa)
 {
-
+  printf("lol");
 }
 
 
 void sw(int registre[], int hexa, int memoire[])
 {
-
+  printf("lol");
 }
 
 
 void xor(int registre[], int hexa)
 {
-
+  printf("lol");
 }
-*/
+
