@@ -13,6 +13,7 @@
 #define rd(hexa)  masque(15,11,hexa)
 #define rs(hexa)  masque(25,21,hexa)
 #define rt(hexa)  masque(20,16,hexa)
+#define instr(hexa) masque(25,0,hexa)
 
 
 void add(int registre[], int hexa);
@@ -22,7 +23,7 @@ int *beq(int registre[], int hexa, int *PC);
 int *bgtz(int registre[], int hexa, int *PC);
 int *blez(int registre[], int hexa, int *PC);
 int *bne(int registre[], int hexa, int *PC);
-int *j(int registre[], int hexa, int *PC);
+int *j(int hexa, int *PC);
 int *jal(int registre[], int hexa, int *PC);
 int *jr(int registre[], int hexa, int *PC);
 void lui(int registre[], int hexa);

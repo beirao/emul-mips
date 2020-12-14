@@ -67,39 +67,53 @@ int *bne(int registre[], int hexa, int *PC)
   return PC;
 }
 
-/*
-int *j(int registre[], int hexa, int *PC)
+
+int *j(int hexa, int *PC)
 {
-  if(lireRegistre(registre, rs(hexa)) == lireRegistre(registre, rt(hexa)))
-  {
-    PC = (immediate(hexa) << 2) + ((unsigned int)PC & 4026531840);
-  }
+  PC += instr(hexa);
+  return PC;
 }
 
 
 int *jal(int registre[], int hexa, int *PC)
 {
-
+  ecritureRegistre(registre, 31, (PC+1));
+  PC += instr(hexa);
+  return PC;
 }
 
 
 int *jr(int registre[], int hexa, int *PC)
 {
+  int temp = 0;
 
+  temp = PC;
+  PC = (PC - temp/4) + lireRegistre(registre, rs(hexa))/4;
+
+  return PC;
 }
-*/
+
 
 void lui(int registre[], int hexa)
 {
   ecritureRegistre(registre, rt(hexa), (immediate(hexa) << 16));
 }
 
-/*
+
 void lw(int registre[], int hexa, int memoire[])
 {
-
+  int index = 0;
+  if(immediate(hexa)%4 == 0)
+  {
+    index = lireRegistre(registre, rs(hexa)) + (immediate(hexa)/4);
+    ecritureRegistre(registre, rt(hexa), lireMemoire(memoire, index, 1));
+  }
+  else
+  {
+    printf("Address Error : l'offset doit être un multiple de 4\n");
+  }
 }
-*/
+
 
 void mfhi(int registre[], int hexa, int HiLo[])
 {
@@ -183,12 +197,22 @@ void sub(int registre[], int hexa)
   else ecritureRegistre(registre, rd(hexa), sub);
 }
 
-/*
+
 void sw(int registre[], int hexa, int memoire[])
 {
+  int index = 0;
+  if(immediate(hexa)%4 == 0)
+  {
+    index = lireRegistre(registre, rs(hexa)) + (immediate(hexa)/4);
+    ecritureMemoire(memoire, index, lireRegistre(registre, rt(hexa)), 1);
+  }
+  else
+  {
+    printf("Address Error : l'offset doit être un multiple de 4\n");
+  }
 
 }
-*/
+
 
 void xor(int registre[], int hexa)
 {

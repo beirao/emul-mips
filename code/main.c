@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
   char fichier_src[TAILLE_MAX] = "src/";
 
   int *registre, *HiLo, *memoire;
-  int *PC = NULL;
+  int *PC = 0;
 
     /* Variables de test */
   int hexa = 0;
@@ -32,31 +32,32 @@ int main(int argc, char const *argv[])
 
 
     /* Zone de Tests */
-    /*
-  hexa = lireMemoire(PC, 0);
+
+  hexa = lireMemoire(PC, 0, 0);
   addi(registre, hexa);
   PC++;
-  hexa = lireMemoire(PC, 0);
+  hexa = lireMemoire(PC, 0, 0);
   addi(registre, hexa);
   PC++;
 
-  hexa = lireMemoire(PC, 0);
-  lui(registre, hexa);
-  PC++;
+  hexa = lireMemoire(PC, 0, 0);
+  PC = jal(registre, hexa, PC);
 
-  hexa = lireMemoire(PC, 0);
+  hexa = lireMemoire(PC, 0, 0);
   add(registre, hexa);
   PC++;
-  hexa = lireMemoire(PC, 0);
-  add(registre, hexa);
-  PC++;
-    */
 
-  ecritureRegistre(registre, 8, 38);
-  ecritureRegistre(registre, 9, 39);
+  affichageMemoire(memoire);
   affichageRegistre(registre, HiLo, PC);
-  hexa = lireMemoire(PC, 0);
-  slt(registre, hexa);
+
+  hexa = lireMemoire(PC, 0, 0);
+  PC = jr(registre, hexa, PC);
+
+  hexa = lireMemoire(PC, 0, 0);
+  add(registre, hexa);
+  PC++;
+  hexa = lireMemoire(PC, 0, 0);
+  add(registre, hexa);
   PC++;
 
 
