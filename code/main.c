@@ -32,26 +32,6 @@ int main(int argc, char const *argv[])
 
   exec(registre, memoire, HiLo, PC);
 
-    /* 
-  hexa = lireMemoire(PC, 0);
-  addi(registre, hexa);
-  PC++;
-  hexa = lireMemoire(PC, 0);
-  addi(registre, hexa);
-  PC++;
-
-  hexa = lireMemoire(PC, 0);
-  lui(registre, hexa);
-  PC++;
-
-  hexa = lireMemoire(PC, 0);
-  add(registre, hexa);
-  PC++;
-  hexa = lireMemoire(PC, 0);
-  add(registre, hexa);
-  PC++;
-     */
-
 
   affichageMemoire(memoire);
   affichageRegistre(registre, HiLo, PC);

@@ -7,7 +7,9 @@
 
 void exec(int registre[], int memoire[], int HiLo[], int *PC)
 {
-  int type, i = 0, PCinitial;
+  int type; 
+  int * PCinitial;
+
 
   while (*PC != END)
   {
@@ -18,7 +20,7 @@ void exec(int registre[], int memoire[], int HiLo[], int *PC)
       appelR(registre, *PC, HiLo, PC);
     }
 
-    else if(type == 0b000011 || type == 0b000010){    /*Jtype*/
+    else if(type == 3 || type == 2){                  /*Jtype*/
       appelJ(registre, *PC, PC);
     }
 
@@ -42,21 +44,21 @@ void appelR(int registre[], int hexa, int HiLo[], int *PC)
 
   switch (fonction)
   {
-  case 0b100000: add(registre, hexa); break;
-  case 0b100100: and(registre, hexa); break;
-  case 0b000000: sll(registre, hexa); break;
-  case 0b000010: if(masque(21,21, hexa) == 1) rotr(registre, hexa);
+  case 32: add(registre, hexa); break;
+  case 36: and(registre, hexa); break;
+  case 0: sll(registre, hexa); break;
+  case 2: if(masque(21,21, hexa) == 1) rotr(registre, hexa);
                  else                         srl(registre, hexa);
                  break;
-  case 0b010000: mfhi(registre, hexa);       break;
-  case 0b010010: mflo(registre, hexa);       break;
-  case 0b011010: divi(registre, hexa, HiLo); break;
-  case 0b011000: mult(registre, hexa, HiLo); break;
-  case 0b100101: or(registre, hexa);         break;
-  case 0b101010: slt(registre, hexa);        break;
-  case 0b100010: sub(registre, hexa);        break;
-  case 0b100110: xor(registre, hexa);        break;
-  case 0b001000: PC = jr(registre, hexa, PC);    break;
+  case 16: mfhi(registre, hexa);       break;
+  case 18: mflo(registre, hexa);       break;
+  case 26: divi(registre, hexa, HiLo); break;
+  case 24: mult(registre, hexa, HiLo); break;
+  case 37: or(registre, hexa);         break;
+  case 42: slt(registre, hexa);        break;
+  case 34: sub(registre, hexa);        break;
+  case 38: xor(registre, hexa);        break;
+  case 8: PC = jr(registre, hexa, PC);    break;
 
   default: printf("ERREUR : instruction non definie"); break;
   }
@@ -65,19 +67,19 @@ void appelR(int registre[], int hexa, int HiLo[], int *PC)
 
 void appelI(int registre[], int memoire[], int *PC, int hexa)
 {
-  int fonction;
-  fonction = masque(31,26,hexa);
+  int opcode;
+  opcode = masque(31,26,hexa);
 
-  switch (fonction)
+  switch (opcode)
   {
-  case 0b001000 : addi(registre, hexa); break;
-  case 0b000100 : PC = beq(registre, hexa, PC); break;
-  case 0b000111 : PC = bgtz(registre, hexa, PC); break;
-  case 0b000110 : PC = blez(registre, hexa, PC); break;
-  case 0b000101 : PC = bne(registre, hexa, PC); break;
-  case 0b100011 : lw(registre, hexa, memoire); break;
-  case 0b101011 : sw(registre, hexa, memoire); break;
-  case 0b001111 : lui(registre, hexa); break;
+  case 8 : addi(registre, hexa); break;
+  case 4 : PC = beq(registre, hexa, PC); break;
+  case 7 : PC = bgtz(registre, hexa, PC); break;
+  case 6 : PC = blez(registre, hexa, PC); break;
+  case 5 : PC = bne(registre, hexa, PC); break;
+  case 35 : lw(registre, hexa, memoire); break;
+  case 43 : sw(registre, hexa, memoire); break;
+  case 15 : lui(registre, hexa); break;
   
   default: printf("ERREUR : instruction non definie"); break;
   }
@@ -86,23 +88,17 @@ void appelI(int registre[], int memoire[], int *PC, int hexa)
 
 void appelJ(int registre[], int hexa, int *PC)
 {
-  int fonction;
-  fonction = masque(31,26,hexa);
+  int opcode;
+  opcode = masque(31,26,hexa);
 
-  switch (fonction)
+  switch (opcode)
   {
-  case 0b000010 : PC = j(registre, hexa, PC); break;
-  case 0b000011 : PC = jal(registre, hexa, PC); break;
+  case 2 : PC = j(registre, hexa, PC); break;
+  case 3 : PC = jal(registre, hexa, PC); break;
   
   default: printf("ERREUR : instruction non definie"); break;
   }
 }
-
-
-/*void decalagePC(int *PC, int nb_decalage)
-{
-
-}*/
 
 
 int masque(int bit_haut, int bit_bas, int hexa)
