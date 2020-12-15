@@ -25,22 +25,11 @@ int main(int argc, char const *argv[])
     emul_mips fichier.txt      -> mode non interactif
     emul_mips fichier.txt -pas -> mode non interactif pas à pas*/
 
-  if(argc == 1)
-  {
-    modeInteractif(memoire, registre, PC, HiLo);
-  }                                               
-  else if(argc == 2 && argv[1] != NULL)
-  {
-    modeNonInteractif(fichier_src, argv[1], memoire, registre, PC, HiLo, 0);
-  }                        
-  else if(argc == 3 && argv[1] != NULL && strcmp("-pas", argv[2]) == 0)
-  {
-    modeNonInteractif(fichier_src, argv[1], memoire, registre, PC, HiLo, 1); /*1 pour le mode pas a pas*/
-  }   
-  else
-  {
-    printf("ERREUR de synthaxe dans la commande d'execution");
-  }
+  if(argc == 1)                                                           modeInteractif(memoire, registre, PC, HiLo);                                 
+  else if(argc == 2 && argv[1] != NULL)                                   modeNonInteractif(fichier_src, argv[1], memoire, registre, PC, HiLo, 0);                       
+  else if(argc == 3 && argv[1] != NULL && strcmp("-pas", argv[2]) == 0)   modeNonInteractif(fichier_src, argv[1], memoire, registre, PC, HiLo, 1); /*1 pour le mode pas a pas*/
+  else                                                                    printf("ERREUR de synthaxe dans la commande d'execution");
+  
   
 
   free(registre);

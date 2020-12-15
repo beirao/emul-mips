@@ -5,36 +5,7 @@
 #include "../header/traitement_instructions.h"
 
 
-void exec(int registre[], int memoire[], int HiLo[], int *PC)
-{
-  int type; 
-  int * PCinitial;
-
-
-  while (*PC != END)
-  {
-    PCinitial = PC;
-    type = masque(31,26,*PC);
-
-    if(type == 0){                                    /*Rtype*/
-      appelR(registre, *PC, HiLo, PC);
-    }
-
-    else if(type == 3 || type == 2){                  /*Jtype*/
-      appelJ(registre, *PC, PC);
-    }
-
-    else{                                             /*Itype*/
-      appelI(registre, memoire, PC, *PC);
-    }
-
-    if(PCinitial == PC){
-      PC++;
-    }
-  }
-}
-
-int *exec_pas(int registre[], int memoire[], int HiLo[], int *PC)
+int *exec(int registre[], int memoire[], int HiLo[], int *PC)
 {
   int type; 
   int * PCinitial;
