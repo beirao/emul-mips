@@ -81,5 +81,45 @@ void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int 
 
 
 void modeInteractif(int memoire[], int registre[], int *PC, int HiLo[]){
-    
+    char instruction[TAILLE_MAX];
+    char *chaine_normalise;
+    int hexa = 0;
+    int argument[4];
+    int index_memoire = 0;
+    int option = 0;
+
+    PC = memoire;
+
+    printf("MODE INTERACTIF\n");
+
+    while(strcmp(instruction, "exit\n"))
+    {   
+        printf("strcomp = %d\n",strcmp(instruction, "exit"));
+        printf("rentrez instruction = ");
+        fgets(instruction, TAILLE_MAX, stdin);
+        printf("\n");
+        
+        chaine_normalise = traitementChaine(instruction);
+
+        printf("-------------------------------------\n");
+        printf("%s\n", chaine_normalise);
+
+        /* Conversion de l'instruction en hexadecimal */
+        argumentToTab(chaine_normalise, argument); /*met les arguments de l'instruction dans le tableau argument */
+        hexa = conversionHexa(chaine_normalise, argument); /*fonction qui produit le code hexa avec les arguments et la chaine normalisée*/
+
+        /* Affichage console */
+        printf("%x\n", hexa);
+
+        ecritureMemoire(memoire, index_memoire, hexa, option);
+        index_memoire++;
+        printf("-------------------------------------\n");
+
+        PC = exec(registre, memoire, HiLo, PC);
+        affichageMemoire(memoire);
+        affichageRegistre(registre, HiLo, PC);
+    }
+
+    memoire[index_memoire] = END; /*signifier la fin du fichier : utile dans exec_instructions.*/
+
 }
