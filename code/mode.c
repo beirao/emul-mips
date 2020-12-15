@@ -40,6 +40,11 @@ void modeNonInteractif(char fichier_src[], char txt[], int memoire[], int regist
         /* Recuperation et traitement de l'instruction */
         chaine_normalise = traitementChaine(chaine); /*Normalise la chaine en enlevant tout les espaces inutiles*/
 
+        /*mode pas a pas*/
+        if(mode == 1){
+            scanf("%s", continu);
+        }
+
         /* Affichage console */
         printf("-------------------------------------\n");
         printf("%s\n", chaine_normalise);
@@ -58,21 +63,20 @@ void modeNonInteractif(char fichier_src[], char txt[], int memoire[], int regist
         index_memoire++;
         printf("-------------------------------------\n");
 
-        /*mode pas a pas*/
         if(mode == 1){
-            scanf("%s", continu);
             PC = exec(registre, memoire, HiLo, PC);
-                
             affichageMemoire(memoire);
             affichageRegistre(registre, HiLo, PC);
         }
+
+        
     }
     
     memoire[index_memoire] = END; /*signifier la fin du fichier : utile dans exec_instructions.*/
 
     printf("=========================================================\n\n\n");
     fclose(fichier_depart);
-    /*-------------------------*/
+
     if(mode == 0){
         while (*PC != END){
             PC = exec(registre, memoire, HiLo, PC);  

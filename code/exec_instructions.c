@@ -47,8 +47,8 @@ void appelR(int registre[], int hexa, int HiLo[], int *PC)
   case 2: if(masque(21,21, hexa) == 1) rotr(registre, hexa);
                  else                         srl(registre, hexa);
                  break;
-  case 16: mfhi(registre, hexa);       break;
-  case 18: mflo(registre, hexa);       break;
+  case 16: mfhi(registre, hexa, HiLo);       break;
+  case 18: mflo(registre, hexa, HiLo);       break;
   case 26: divi(registre, hexa, HiLo); break;
   case 24: mult(registre, hexa, HiLo); break;
   case 37: or(registre, hexa);         break;
@@ -90,7 +90,7 @@ void appelJ(int registre[], int hexa, int *PC)
 
   switch (opcode)
   {
-  case 2 : PC = j(registre, hexa, PC); break;
+  case 2 : PC = j(hexa, PC); break;
   case 3 : PC = jal(registre, hexa, PC); break;
   
   default: printf("ERREUR : instruction non definie"); break;

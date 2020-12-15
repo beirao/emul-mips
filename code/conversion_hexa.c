@@ -167,10 +167,10 @@ int iType(int op_code, int rt, int rs, int immediate){
 int jType(int op_code, int target){
     int hexa = 0;
 
-    if(target < pow(2,26))
+    if(target < pow(2,25))
     {
       hexa += target;
-      hexa += op_code << 26;
+      hexa += op_code << 25;
     }
     else
     {

@@ -75,7 +75,7 @@ void affichageRegistre(int registre[], int HiLo[], int *PC){
     printf("$gp = %d \n",registre[28]);
     printf("$sp = %d \n",registre[29]);
     printf("$fp = %d \n",registre[30]);
-    printf("$ra = %d \n",registre[31]);
+    printf("$ra = %x \n",registre[31]);
 
     printf("$HI = %d | LO = %d \n", HiLo[0], HiLo[1]);
 

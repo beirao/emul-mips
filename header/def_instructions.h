@@ -9,9 +9,12 @@
 #include "../header/exec_instructions.h"
 
 #define immediate(hexa)  (short)masque(15,0,hexa) /* Le (short) permet de respecter le signe de la valeur dans le champs "immediate" */
+#define sa(hexa)  masque(10,6,hexa)
 #define rd(hexa)  masque(15,11,hexa)
 #define rs(hexa)  masque(25,21,hexa)
 #define rt(hexa)  masque(20,16,hexa)
+#define instr(hexa) masque(25,0,hexa)
+
 
 void add(int registre[], int hexa);
 void addi(int registre[], int hexa);
@@ -20,13 +23,13 @@ int *beq(int registre[], int hexa, int *PC);
 int *bgtz(int registre[], int hexa, int *PC);
 int *blez(int registre[], int hexa, int *PC);
 int *bne(int registre[], int hexa, int *PC);
-int *j(int registre[], int hexa, int *PC);
+int *j(int hexa, int *PC);
 int *jal(int registre[], int hexa, int *PC);
 int *jr(int registre[], int hexa, int *PC);
 void lui(int registre[], int hexa);
 void lw(int registre[], int hexa, int memoire[]);
-void mfhi(int registre[], int hexa);
-void mflo(int registre[], int hexa);
+void mfhi(int registre[], int hexa, int HiLo[]);
+void mflo(int registre[], int hexa, int HiLo[]);
 void mult(int registre[], int hexa, int HiLo[]);
 void divi(int registre[], int hexa, int HiLo[]);
 void or(int registre[], int hexa);
