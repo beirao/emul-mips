@@ -3,14 +3,14 @@
 #include "../header/registre.h"
 #include "../header/def_instructions.h"
 #include "../header/exec_instructions.h"
+#include "../header/conversion_hexa.h"
 
 void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int registre[], int *PC, int HiLo[], int mode){
     strcat(fichier_src, txt);
     affichageRegistre(registre, HiLo, PC);
 
-    char *init_chain = "";
-    char chaine[TAILLE_MAX] = "";
-    char *chaine_normalise = "";
+    char *chaine = "";
+    char *chaine_normalise;
     int hexa = 0;
     int argument[4];
     int index_memoire = 0;
@@ -32,7 +32,7 @@ void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int 
     while(fgets(chaine, TAILLE_MAX, fichier_depart) != NULL)
     {
         hexa = 0;
-        chaine[TAILLE_MAX] = init_chain;
+        chaine[TAILLE_MAX] = "";
 
         /* Recuperation et traitement de l'instruction */
         chaine_normalise = traitementChaine(chaine); /*Normalise la chaine en enlevant tout les espaces inutiles*/
