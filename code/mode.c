@@ -4,7 +4,7 @@
 #include "../header/def_instructions.h"
 #include "../header/exec_instructions.h"
 
-void modeNonInteractif(char fichier_src[], char txt[], int memoire[], int registre[], int *PC, int HiLo[], int mode){
+void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int registre[], int *PC, int HiLo[], int mode){
     strcat(fichier_src, txt);
     affichageRegistre(registre, HiLo, PC);
 
@@ -17,13 +17,10 @@ void modeNonInteractif(char fichier_src[], char txt[], int memoire[], int regist
     int option = 0;
     char continu[9];
 
-    int type; 
-    int * PCinitial;
 
     FILE *fichier_depart;
     fichier_depart = ouvertureFichier(fichier_src, "r");
     PC = memoire;
-
 
 
     if(mode == 1)        printf("MODE PAS A PAS : Pour passer a l'instruction suivante appuyez sur n (pour next) puis ENTER.\n");
@@ -35,7 +32,7 @@ void modeNonInteractif(char fichier_src[], char txt[], int memoire[], int regist
     while(fgets(chaine, TAILLE_MAX, fichier_depart) != NULL)
     {
         hexa = 0;
-        chaine[TAILLE_MAX] = *init_chain;
+        chaine[TAILLE_MAX] = init_chain;
 
         /* Recuperation et traitement de l'instruction */
         chaine_normalise = traitementChaine(chaine); /*Normalise la chaine en enlevant tout les espaces inutiles*/
@@ -67,9 +64,7 @@ void modeNonInteractif(char fichier_src[], char txt[], int memoire[], int regist
             PC = exec(registre, memoire, HiLo, PC);
             affichageMemoire(memoire);
             affichageRegistre(registre, HiLo, PC);
-        }
-
-        
+        }        
     }
     
     memoire[index_memoire] = END; /*signifier la fin du fichier : utile dans exec_instructions.*/
