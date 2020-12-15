@@ -61,7 +61,6 @@ void ecritureRegistre(int reg[], int id_registre, int valeur){
 
 void affichageRegistre(int registre[], int HiLo[], int *PC){
 
-    printf("=========================================================\n");
     printf("Registres : \n");
 
     printf("$zero = %d \n",registre[0]);
