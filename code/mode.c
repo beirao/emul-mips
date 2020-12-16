@@ -13,7 +13,7 @@ void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int 
     int argument[4];
     int index_memoire = 0;
     int option = 0;
-    /*char continu;*/
+
     char continu[TAILLE_MAX] = "";
     FILE *fichier_depart;
 
@@ -40,7 +40,7 @@ void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int 
         hexa = conversionHexa(chaine_normalise, argument); /* Fonction qui produit le code hexa avec les arguments et la chaine normalisee */
 
         /* Traitement des lignes de commentaires, des lignes vides et des instructions invalides (hexa = 0 sauf NOP) => pas d'ecriture dans le fichier hexa, retour au debut du while */
-        if(chaine_normalise[0] == '#' || (chaine_normalise[0] != 'N' && hexa == 0)) continue;
+        if(chaine_normalise[0] == '#') continue;
 
 
 

@@ -38,26 +38,28 @@ void appelR(int registre[], int hexa, int HiLo[], int *PC)
 {
   int fonction;
   fonction = masque(5,0,hexa);
-
-  switch (fonction)
+  if (hexa != 0)
   {
-  case 32: add(registre, hexa); break;
-  case 36: and(registre, hexa); break;
-  case 0: sll(registre, hexa); break;
-  case 2: if(masque(21,21, hexa) == 1) rotr(registre, hexa);
-                 else                         srl(registre, hexa);
-                 break;
-  case 16: mfhi(registre, hexa, HiLo);       break;
-  case 18: mflo(registre, hexa, HiLo);       break;
-  case 26: divi(registre, hexa, HiLo); break;
-  case 24: mult(registre, hexa, HiLo); break;
-  case 37: or(registre, hexa);         break;
-  case 42: slt(registre, hexa);        break;
-  case 34: sub(registre, hexa);        break;
-  case 38: xor(registre, hexa);        break;
-  case 8: PC = jr(registre, hexa, PC);    break;
+    switch (fonction)
+    {
+    case 32: add(registre, hexa); break;
+    case 36: and(registre, hexa); break;
+    case 0: sll(registre, hexa); break;
+    case 2: if(masque(21,21, hexa) == 1) rotr(registre, hexa);
+                  else                         srl(registre, hexa);
+                  break;
+    case 16: mfhi(registre, hexa, HiLo);       break;
+    case 18: mflo(registre, hexa, HiLo);       break;
+    case 26: divi(registre, hexa, HiLo); break;
+    case 24: mult(registre, hexa, HiLo); break;
+    case 37: or(registre, hexa);         break;
+    case 42: slt(registre, hexa);        break;
+    case 34: sub(registre, hexa);        break;
+    case 38: xor(registre, hexa);        break;
+    case 8: PC = jr(registre, hexa, PC);    break;
 
-  default: printf("ERREUR : instruction non definie"); break;
+    default: printf("ERREUR : instruction non definie"); break;
+    }
   }
 }
 

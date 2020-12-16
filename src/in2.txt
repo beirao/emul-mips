@@ -1,3 +1,8 @@
 ADDI $5,$0,5
 ADDI $2,$0,33
+NOP
 ADD $7,$5,$2
+##fdf
+NOP
+SYSCALL
+NOP

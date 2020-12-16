@@ -40,11 +40,10 @@ int conversionHexa(char chaine[], int argument[]){
         hexa = rType(argument[0], 0, 0, 0, function);
       }
 
-    /* Format : Mnemonic (NOP - SYSCALL) */
-    else if(testChaine(chaine, "NOP") || testChaine(chaine, "SYSCALL ")){
-        if(testChaine(chaine, "NOP")) function = 0;
-        else if(testChaine(chaine, "SYSCALL ")) function = 12;
 
+    /* Format : Mnemonic (NOP - SYSCALL) */
+    else if(testChaine(chaine, "NOP") || testChaine(chaine, "SYSCALL")){
+        function = 0;
         hexa = rType(0, 0, 0, 0, function);
     }
 
