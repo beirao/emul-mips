@@ -1,8 +1,20 @@
-ADDI $8,$0,4
+ADDI $8,$8,1
+ADDI $9,$9,1
+
+JAL 6
+ADDI $0,$10,1
+
 ADDI $9,$0,0
 
 LUI $24,2
+ADDI $14,$0,10
+BEQ $9,$0,2
+JR $31
 
+SW $8, -4($8)
+LW $2 , 0($0)
+NOP
+SYSCALL  
 ADD $16,$8,$9
 ADD $17,$8,$9
 ADD $18,$8,$9

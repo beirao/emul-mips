@@ -12,7 +12,7 @@ char *traitementChaine(char *chaine){
     char *resultat;
     int break_while = 0;
 
-    resultat =  chaine;
+    resultat = chaine;
 
     /*cette premiere boucle repertorie l'index des espaces inutile dans le tableau index_espace*/
     while(resultat[i_chaine] != '\0' && break_while == 0){ /*Boucle jusqu'a la fin de la chaine (fin des instructions) */
@@ -96,7 +96,7 @@ void argumentToTab(char *chaine, int *argument){
             i_arg++;
         }
 
-        else if(chaine[i_chaine-2] >= 'A' && chaine[i_chaine-2] <= 'Z' && chaine[i_chaine-1] == ' ' && chaine[i_chaine] != '$'){ /*cas d'un premier argument qui n'est pas un registre*/
+        else if(chaine[i_chaine-2] >= 'A' && chaine[i_chaine-2] <= 'Z' && chaine[i_chaine-1] == ' ' && chaine[i_chaine] != '$' && chaine[i_chaine] != '-'){ /*cas d'un premier argument positif qui n'est pas un registre*/
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
                 argument[i_arg] += chaine[i_chaine] - '0';
@@ -105,7 +105,7 @@ void argumentToTab(char *chaine, int *argument){
             i_arg++;
         }
 
-        else if(chaine[i_chaine-2] == ',' && chaine[i_chaine-1] == '-'){/*cas d'un nombre negatif en argument */
+        else if(chaine[i_chaine-1] == '-'){/*cas d'un nombre negatif en argument */
             while(chaine[i_chaine] >= '0' && chaine[i_chaine] <= '9'){
                 argument[i_arg] = argument[i_arg]*10;
                 argument[i_arg] += chaine[i_chaine] - '0';

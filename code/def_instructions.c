@@ -4,20 +4,22 @@
 
 void add(int registre[], int hexa)
 {
-  long add = 0;
+  int add = 0;
   add = (lireRegistre(registre, rs(hexa)) + lireRegistre(registre, rt(hexa)));
 
   if((lireRegistre(registre, rs(hexa)) >= 0) && (lireRegistre(registre, rt(hexa)) >= 0) && (add < 0)) printf("IntegerOverflow pour ADD\n");
+  else if((lireRegistre(registre, rs(hexa)) < 0) && (lireRegistre(registre, rt(hexa)) < 0) && (add >= 0)) printf("IntegerOverflow pour ADD\n");
   else ecritureRegistre(registre, rd(hexa), add);
 }
 
 
 void addi(int registre[], int hexa)
 {
-  long add = 0;
+  int add = 0;
   add = (lireRegistre(registre, rs(hexa)) + immediate(hexa));
 
-  if((lireRegistre(registre, rs(hexa)) >= 0) && (lireRegistre(registre, rt(hexa)) >= 0) && (add < 0)) printf("IntegerOverflow pour ADDI\n");
+  if((lireRegistre(registre, rs(hexa)) >= 0) && (immediate(hexa) >= 0) && (add < 0)) printf("IntegerOverflow pour ADDI\n");
+  else if((lireRegistre(registre, rs(hexa)) < 0) && (immediate(hexa) < 0) && (add >= 0)) printf("IntegerOverflow pour ADDI\n");
   else ecritureRegistre(registre, rt(hexa), add);
 }
 
@@ -67,18 +69,19 @@ int *bne(int registre[], int hexa, int *PC)
   return PC;
 }
 
-
 int *j(int hexa, int *PC)
 {
-  PC += instr(hexa);
+  /* On decide de legerement modifier l'utilisation de Jump : pour obtenir notre adresse de saut, on ajoute la valeur dans immediate à l'adresse de la premiere instruction en memoire */
+  /* Exemple : J 2 effectue un saut a la deuxième instruction du programme, sachant que le programme commence a l'instruction 0 (le calcul decrit dans l'annexe nous faisait sortir de la memoire et etait difficile a utiliser) */
+  PC += immediate(hexa);
   return PC;
 }
 
-
-int *jal(int registre[], int hexa, int *PC)
+int *jal(int registre[], int hexa, int *PC, int *retour)
 {
-  ecritureRegistre(registre, 31, (PC+1));
-  PC += instr(hexa);
+  /* On utilise le meme principe que pour Jump */
+  ecritureRegistre(registre, 31, (retour+1));
+  PC += immediate(hexa);
   return PC;
 }
 
@@ -86,7 +89,7 @@ int *jal(int registre[], int hexa, int *PC)
 int *jr(int registre[], int hexa, int *PC)
 {
   int temp = 0;
-
+  /* Les registres n'ont pas assez de bit pour contenir une adresse de saut valide, on combine donc leurs valeurs avec l'adresse du debut de la memoire */
   temp = PC;
   PC = (PC - temp/4) + lireRegistre(registre, rs(hexa))/4;
 
@@ -172,7 +175,10 @@ void rotr(int registre[], int hexa)
 
 void sll(int registre[], int hexa)
 {
-  ecritureRegistre(registre, rd(hexa), (lireRegistre(registre, rt(hexa)) << sa(hexa)));
+  if(hexa != 0) /* Condition qui permet de ne pas afficher d'erreur pour NOP */
+  {
+    ecritureRegistre(registre, rd(hexa), (lireRegistre(registre, rt(hexa)) << sa(hexa)));
+  }
 }
 
 
@@ -190,10 +196,11 @@ void srl(int registre[], int hexa)
 
 void sub(int registre[], int hexa)
 {
-  long sub = 0;
+  int sub = 0;
   sub = (lireRegistre(registre, rs(hexa)) - lireRegistre(registre, rt(hexa)));
 
-  if((lireRegistre(registre, rs(hexa)) <= 0) && (lireRegistre(registre, rt(hexa)) >= 0) && (sub > 0)) printf("IntegerOverflow pour SUB\n");
+  if((lireRegistre(registre, rs(hexa)) < 0) && (lireRegistre(registre, rt(hexa)) >= 0) && (sub >= 0)) printf("IntegerOverflow pour SUB\n");
+  else if((lireRegistre(registre, rs(hexa)) >= 0) && (lireRegistre(registre, rt(hexa)) < 0) && (sub < 0)) printf("IntegerOverflow pour SUB\n");
   else ecritureRegistre(registre, rd(hexa), sub);
 }
 

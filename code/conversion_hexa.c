@@ -1,4 +1,5 @@
 #include "../header/conversion_hexa.h"
+#include "../header/exec_instructions.h"
 
 
 int conversionHexa(char chaine[], int argument[]){
@@ -41,9 +42,9 @@ int conversionHexa(char chaine[], int argument[]){
       }
 
     /* Format : Mnemonic (NOP - SYSCALL) */
-    else if(testChaine(chaine, "NOP") || testChaine(chaine, "SYSCALL ")){
+    else if(testChaine(chaine, "NOP") || testChaine(chaine, "SYSCALL")){
         if(testChaine(chaine, "NOP")) function = 0;
-        else if(testChaine(chaine, "SYSCALL ")) function = 12;
+        else if(testChaine(chaine, "SYSCALL")) function = 12;
 
         hexa = rType(0, 0, 0, 0, function);
     }
@@ -119,7 +120,7 @@ int conversionHexa(char chaine[], int argument[]){
     /* ___ERREUR___ */
     else{
         hexa = 0;
-        printf("erreur : commande inconnue\n");
+        printf("ERREUR : commande inconnue\n");
     }
 
     return hexa;
@@ -140,7 +141,7 @@ int rType(int rd, int rs, int rt, int sa, int function){
     }
     else
     {
-      printf("Erreur : Overflow valeur (registre ou sa)\n");
+      printf("ERREUR : overflow valeur (registre ou sa)\n");
     }
 
     return hexa;
@@ -149,16 +150,17 @@ int rType(int rd, int rs, int rt, int sa, int function){
 int iType(int op_code, int rt, int rs, int immediate){
     int hexa = 0;
 
-    if((immediate < pow(2,15)) && (rt < 32) && (rs < 32))
+    if((abs(immediate) < pow(2,15))  && (rt < 32) && (rs < 32))
     {
       hexa += immediate;
       hexa += rt << 16;
       hexa += rs << 21;
       hexa += op_code << 26;
+      if(immediate < 0) hexa += pow(2,16); /* Permet de gerer le cas ou immediate contient une valeur negative */
     }
     else
     {
-      printf("Erreur : Overflow valeur (immediate, offset ou registre)\n");
+      printf("ERREUR : overflow valeur (immediate, offset ou registre)\n");
     }
 
     return hexa;
@@ -167,14 +169,15 @@ int iType(int op_code, int rt, int rs, int immediate){
 int jType(int op_code, int target){
     int hexa = 0;
 
-    if(target < pow(2,25))
+    if(target < pow(2,25) && target >= 0)
     {
       hexa += target;
-      hexa += op_code << 25;
+      hexa += op_code << 26;
     }
+
     else
     {
-      printf("Erreur : Overflow valeur\n");
+      printf("ERREUR : overflow target\n");
     }
 
     return hexa;
