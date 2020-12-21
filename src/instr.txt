@@ -13,7 +13,7 @@ JR $31
 
 SW $8, -4($8)
 LW $2 , 0($0)
-NOP
+NOP     
 SYSCALL  
 ADD $16,$8,$9
 ADD $17,$8,$9

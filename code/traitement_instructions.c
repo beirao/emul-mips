@@ -12,7 +12,17 @@ char *traitementChaine(char *chaine){
     char *resultat;
     int break_while = 0;
 
+    
     resultat = chaine;
+
+    if(chaine[0] == 'N' && chaine[1] == 'O' && chaine[2] == 'P' ){
+        resultat[3] = '#';
+        return resultat;
+    }
+    if(chaine[0] == 'S' && chaine[1] == 'Y' && chaine[2] == 'S' && chaine[3] == 'C' && chaine[4] == 'A' && chaine[5] == 'L' && chaine[6] == 'L'){
+        resultat[7] = '#';
+        return resultat;
+    }
 
     /*cette premiere boucle repertorie l'index des espaces inutile dans le tableau index_espace*/
     while(resultat[i_chaine] != '\0' && break_while == 0){ /*Boucle jusqu'a la fin de la chaine (fin des instructions) */
@@ -43,6 +53,7 @@ char *traitementChaine(char *chaine){
     }
 
     if(index_espace[0] == END) return resultat; /*si c'est un commentaire ou ligne vide renvoie {0}*/
+    
 
     i_ie = 0;
     nb_if = 0;
@@ -52,7 +63,7 @@ char *traitementChaine(char *chaine){
 
         if(index_espace[i_ie] ==  i_resultat){
             i_temp = index_espace[i_ie] - nb_if;
-
+if(index_espace[0] == END) return resultat;
             while(resultat[i_temp] != '\0'){
                 resultat[i_temp] = resultat[i_temp + 1];
                 i_temp++;
