@@ -6,7 +6,7 @@ Voici les commandes à utiliser pour utiliser le programme :
 <br/>emul_mips fichier.txt -pas -> mode non interactif pas à pas
 
 Les fichier .txt de test sont : in1.txt, in2.txt, in3.txt, in4.txt. Ils sont fourni avec le sujet.
-Nous avons réalisé deux fichiers de test supplémentaires : test1.txt et test2.txt.
+<br/>Nous avons réalisé deux fichiers de test supplémentaires : test1.txt et test2.txt.
 
 Pour le mode pas à pas, appuyez sur ENTER pour passer à la prochaine instruction.
 
