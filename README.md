@@ -1,9 +1,9 @@
 # emul_mips
 
 Voici les commandes à utiliser pour utiliser le programme : 
-\nemul_mips -> mode interactif
-\nemul_mips fichier.txt -> mode non interactif
-\nemul_mips fichier.txt -pas -> mode non interactif pas à pas
+<br/>emul_mips -> mode interactif
+<br/>emul_mips fichier.txt -> mode non interactif
+<br/>emul_mips fichier.txt -pas -> mode non interactif pas à pas
 
 Les fichier .txt de test sont in1.txt in2.txt in3.txt in4.txt qui sont fourni avec le sujet.
 Nous avons constituer deux fichier de test complementaire : test1.txt test2.txt 
