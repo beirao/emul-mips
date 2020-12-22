@@ -1,0 +1,21 @@
+ADDI $8,$8,1 #Test
+ADDI $9,$9,1
+
+#ligne vide
+JAL 6
+ADDI $0,$10,1 #on ne peut pas ecrire dans le registre 0, renvoie donc une erreur
+
+ADDI $9,$0,0
+
+LUI $24,2
+ADD $14,$14,$8
+BEQ $9,$0,2
+JR $31
+
+SW $8, -4($8)
+LW $2 , 0($0)
+NOP
+SYSCALL
+ADD $16,$8,$9
+ADD $17,$8,$9
+ADD $18,$8,$9

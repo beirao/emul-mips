@@ -69,6 +69,7 @@ int *bne(int registre[], int hexa, int *PC)
   return PC;
 }
 
+
 int *j(int hexa, int *PC)
 {
   /* On decide de legerement modifier l'utilisation de Jump : pour obtenir notre adresse de saut, on ajoute la valeur dans immediate à l'adresse de la premiere instruction en memoire */
@@ -76,6 +77,7 @@ int *j(int hexa, int *PC)
   PC += immediate(hexa);
   return PC;
 }
+
 
 int *jal(int registre[], int hexa, int *PC, int *retour)
 {
@@ -136,7 +138,7 @@ void mult(int registre[], int hexa, int HiLo[])
   op1 = lireRegistre(registre, rs(hexa));
   op2 = lireRegistre(registre, rt(hexa));
 
-  ecritureRegistre(HiLo, 32, (op1*op2) >> 32);
+  ecritureRegistre(HiLo, 32, ((op1*op2) >> 32) & 0x00000000FFFFFFFF);
   ecritureRegistre(HiLo, 33, (op1*op2) & 0x00000000FFFFFFFF);
 }
 
@@ -217,7 +219,6 @@ void sw(int registre[], int hexa, int memoire[])
   {
     printf("Address Error : l'offset doit être un multiple de 4\n");
   }
-
 }
 
 

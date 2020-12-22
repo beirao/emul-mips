@@ -6,16 +6,13 @@
 #include <math.h>
 #include <string.h>
 #include <unistd.h>
-#define TAILLE_MAX 50
-#define END 999 /*correspond a la fin dans un tableau de int dans la fonction chaine*/
+#define TAILLE_MAX 200
+#define END 999
 
 
 FILE *ouvertureFichier(char *chemin_fichier, char *mode);
 char *traitementChaine(char *chaine);
 void argumentToTab(char *chaine, int *argument);
-
-/*void lireDonnees(char fichier_commande[], char fichier_hexa[]);
-void pushHexa(int hexa, FILE *fichier_arrive, int sw_lw);*/
 
 
 #endif

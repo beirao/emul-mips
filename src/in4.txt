@@ -2,10 +2,10 @@ ADDI $2,$0,5 # ezezez
    ADDI $3,$0,7
 
 # some comment
-SW $3,12($0)
+SW $3,10($0)
 
 
-LW $4,12($0) # some other comment
+LW $4,10($0) # some other comment
 
 SLL $5,$4,2
 SRL $6,$5,2

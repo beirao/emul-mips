@@ -24,6 +24,8 @@ void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int 
     if(mode == 1)        printf("\nMODE PAS A PAS : Pour passer a l'instruction suivante appuyez sur ENTER.\n\n");
     else if(mode == 0)   printf("\nMODE NON INTERACTIF\n\n");
 
+
+
     printf("=======================================================================\n");
     printf("Conversion des instructions en code hexadecimal et ecriture en memoire :\n\n");
 
@@ -34,26 +36,25 @@ void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int 
         /* Traitement de l'instruction */
         chaine_normalise = traitementChaine(chaine); /*Normalise la chaine en enlevant tout les espaces inutiles*/
 
-        /* Traitement des lignes de commentaires et des lignes vides */
-        if(chaine_normalise[0] == '#' || chaine_normalise[0] == '\n') continue;
+        /* Empeche d'effectuer la suite du programme pour les lignes de commentaires et les lignes vides */
+        if(chaine_normalise[0] != '#' && chaine_normalise[0] != '\n' && chaine_normalise[0] != '\r')
+        {
+              /* Affichage console */
+          printf("-------------------------------------\n");
+          printf("%s\n", chaine_normalise);
 
+          /* Conversion de l'instruction en hexadecimal */
+          argumentToTab(chaine_normalise, argument); /* Met les arguments de l'instruction dans le tableau argument */
+          hexa = conversionHexa(chaine_normalise, argument); /* Fonction qui produit le code hexa avec les arguments et la chaine normalisee */
 
+              /* Affichage console */
+          printf("%x\n", hexa);
+          printf("-------------------------------------\n");
 
-            /* Affichage console */
-        printf("-------------------------------------\n");
-        printf("%s\n", chaine_normalise);
-
-        /* Conversion de l'instruction en hexadecimal */
-        argumentToTab(chaine_normalise, argument); /* Met les arguments de l'instruction dans le tableau argument */
-        hexa = conversionHexa(chaine_normalise, argument); /* Fonction qui produit le code hexa avec les arguments et la chaine normalisee */
-
-            /* Affichage console */
-        printf("%x\n", hexa);
-        printf("-------------------------------------\n");
-
-        /* Ecriture en memoire du code hexa de l'instruction */
-        ecritureMemoire(memoire, index_memoire, hexa, option);
-        index_memoire++;
+          /* Ecriture en memoire du code hexa de l'instruction */
+          ecritureMemoire(memoire, index_memoire, hexa, option);
+          index_memoire++;
+        }
     }
     printf("Fin du fichier\n\n");
     ecritureMemoire(memoire, index_memoire, END, option);
@@ -72,7 +73,7 @@ void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int 
           /* Affichage console */
       printf("Code hexadecimal de l'instruction executee : %x\n", *PC);
 
-      /* Execution programme */
+      /* Execution du programme */
       PC = exec(registre, memoire, HiLo, PC);
 
           /* Affichage console */
@@ -83,6 +84,8 @@ void modeNonInteractif(char fichier_src[], const char txt[], int memoire[], int 
     printf("=======================================================================\n\n\n");
     fclose(fichier_depart);
 }
+
+
 
 
 
@@ -100,36 +103,49 @@ void modeInteractif(int memoire[], int registre[], int *PC, int HiLo[]){
 
     while(strcmp(instruction, "exit\n") && strcmp(instruction, "EXIT\n"))
     {
+      if(lireMemoire(memoire, index_memoire, option) == 0)
+      {
         /* Recuperation de l'instruction rentree par l'utilisateur */
         printf("Rentrez l'instruction = ");
         fgets(instruction, TAILLE_MAX, stdin);
         printf("\n");
 
-        /* Empeche d'effectuer la suite de la boucle si on souhaite quitter le programme */
-        if(strcmp(instruction, "exit\n") == 0 || strcmp(instruction, "EXIT\n") == 0) continue;
+        /* Empeche d'effectuer la suite du programme si on souhaite quitter le programme */
+        if(strcmp(instruction, "exit\n") != 0 && strcmp(instruction, "EXIT\n") != 0)
+        {
+          /* Traitement de l'instruction */
+          chaine_normalise = traitementChaine(instruction);
+
+              /* Affichage console */
+          printf("-------------------------------------\n");
+          printf("%s\n", chaine_normalise);
+
+          /* Conversion de l'instruction en hexadecimal */
+          argumentToTab(chaine_normalise, argument); /* Met les arguments de l'instruction dans le tableau argument */
+          hexa = conversionHexa(chaine_normalise, argument); /* Fonction qui produit le code hexa avec les arguments et la chaine normalisee */
+
+              /* Affichage console */
+          printf("%x\n", hexa);
+          printf("-------------------------------------\n");
 
 
+          /* Ecriture en memoire du code hexa de l'instruction */
+          ecritureMemoire(memoire, index_memoire, hexa, option);
+        }
+      }
 
-        /* Traitement de l'instruction */
-        chaine_normalise = traitementChaine(instruction);
-
+      else
+      {
             /* Affichage console */
-        printf("-------------------------------------\n");
-        printf("%s\n", chaine_normalise);
+        printf("Code hexadecimal de l'instruction executee : %x\n", *PC);
+      }
 
-        /* Conversion de l'instruction en hexadecimal */
-        argumentToTab(chaine_normalise, argument); /* Met les arguments de l'instruction dans le tableau argument */
-        hexa = conversionHexa(chaine_normalise, argument); /* Fonction qui produit le code hexa avec les arguments et la chaine normalisee */
+      /* Execution du programme */
+      PC = exec(registre, memoire, HiLo, PC);
+      index_memoire = (PC - memoire);
 
-        /* Execution de l'instruction */
-        ecritureMemoire(memoire, index_memoire, hexa, option);
-        PC = exec(registre, memoire, HiLo, PC);
-        index_memoire++;
-
-            /* Affichage console */
-        printf("%x\n", hexa);
-        printf("-------------------------------------\n");
-        affichageMemoire(memoire);
-        affichageRegistre(registre, HiLo, PC);
+          /* Affichage console */
+      affichageMemoire(memoire);
+      affichageRegistre(registre, HiLo, PC);
     }
 }

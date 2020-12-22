@@ -12,7 +12,7 @@ char *traitementChaine(char *chaine){
     char *resultat;
     int break_while = 0;
 
-    
+
     resultat = chaine;
 
     if(chaine[0] == 'N' && chaine[1] == 'O' && chaine[2] == 'P' ){
@@ -53,7 +53,7 @@ char *traitementChaine(char *chaine){
     }
 
     if(index_espace[0] == END) return resultat; /*si c'est un commentaire ou ligne vide renvoie {0}*/
-    
+
 
     i_ie = 0;
     nb_if = 0;
@@ -147,19 +147,3 @@ FILE *ouvertureFichier(char *chemin_fichier, char *mode)
     }
     return fichier;
 }
-
-/*void pushHexa(int hexa, FILE *fichier_arrive, int sw_lw){
-
-    if(sw_lw == 0){
-
-        if(hexa < 0xF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFFFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFFFFF) fprintf(fichier_arrive, "0");
-        if(hexa < 0xFFFFFFF) fprintf(fichier_arrive, "0");
-    }
-
-    fprintf(fichier_arrive, "%x\n", hexa);
-}*/

@@ -1,0 +1,36 @@
+ADDI $1, $0, 1 #renvoie erreur car ecriture dans registre 1 interdite
+ADDI $2,$0,4
+ADDI $3,$0,7
+    XOR $4, $2, $3
+
+# Test ligne vide au-dessus
+ADDI $8, $0, -10
+ADDI  $8 ,$8, 5
+SYSCALL
+    BLEZ $8, -2 #commentaire de test
+
+    #commentaire de test 2
+ADDI $16, $2, $3
+SUB  $17 , $ 2, $ 3
+MULT $16, $17
+MFHI $10
+MFLO $11
+
+JAL 16
+
+ADD $3,$4,$5
+J 18
+
+SW $3, 4($0)
+JR $31
+
+SW $3, -4($3)
+NOP
+OR $3,$0,$2
+BEQ $4,$3,4
+SLT $24, $4, $3
+ADDI $12,$0,5
+ADDI $13,$12,12
+DIV $13,$12
+
+TEST $3 #test commande invalide
