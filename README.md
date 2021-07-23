@@ -1,1 +1,1 @@
-# emul_mips
+# Émulateur de processeur MIPS
